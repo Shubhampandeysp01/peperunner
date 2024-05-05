@@ -11,6 +11,11 @@ import { Mario } from 'utils/mario';
 import { Pipe } from 'utils/pipe';
 import { Sound, Sounds } from 'utils/sound';
 import { Sprite } from 'utils/sprites';
+import { updateLeaderboardWithPublicKey } from 'updateLeaderboardWithPublicKey'
+import { useWallet } from '@solana/wallet-adapter-react';
+
+
+
 
 export enum Layers {
   Background = 'background',
@@ -106,6 +111,7 @@ export const Game: React.FC = () => {
         k.pos(k.center()),
         k.origin('center'),
       ]);
+      updateLeaderboardWithPublicKey(score);
 
       const playAgain = k.add([
         k.text('Play Again!', { size: 45 }),
@@ -120,6 +126,8 @@ export const Game: React.FC = () => {
         setState({ score });
         k.go(Scenes.Game);
       });
+
+
     });
     
     k.scene(Scenes.Start, () => {

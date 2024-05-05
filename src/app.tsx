@@ -8,14 +8,17 @@ import React, { useState } from 'react';
 import { AppWalletProvider } from 'components/AppWalletProvider';
 import { useWallet, useConnection } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import { updateLeaderboardWithPublicKey } from 'updateLeaderboardWithPublicKey'
 
 export const App: React.FC = () => {
   const [state, setState] = useState(DEFAULT_STATE.state);
   const {publicKey, connected} = useWallet();
-  console.log(connected);
+  // console.log(connected);
   function reducer(partial: Record<any, any>) {
     setState({ ...state, ...partial });
   }
+
+
 
   return (
     <React.StrictMode>

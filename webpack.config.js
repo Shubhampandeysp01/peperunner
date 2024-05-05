@@ -1,5 +1,6 @@
 module.exports = function (webpackEnv) {
     // ...
+    print("Webkmksnkcnskdnkndskkdnkndknkdsk");
     return {
      // ...
       resolve: {
