@@ -12,7 +12,6 @@ import { Pipe } from 'utils/pipe';
 import { Sound, Sounds } from 'utils/sound';
 import { Sprite } from 'utils/sprites';
 import { updateLeaderboardWithPublicKey } from 'updateLeaderboardWithPublicKey'
-import { useWallet } from '@solana/wallet-adapter-react';
 
 
 
