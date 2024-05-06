@@ -4,16 +4,26 @@ import pool from 'db';
 import axios from 'axios';
 
 let wallet_address = "";
+const baseURL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
 export const updateLeaderboardWithPublicKey = async (score: number) => {
   try {
-    const baseURL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+    
     await axios.post(`${baseURL}/update-leaderboard`, { wallet_address, score });
     console.log('Leaderboard updated successfully');
 } catch (error) {
-    console.error('Error updating leaderboard:', error);
+    console.error('Error updating leaderboard: ', error);
 }
 };
+
+export const getleaderboard = async() => {
+  try{
+    const response = await axios.get(`${baseURL}/leaderboard`);
+    return response.data;
+  } catch (error){
+    console.error('Error in getLeaderboard: ',error );
+  }
+}
 
 const MyComponent = () => {
   const {publicKey} = useWallet();
