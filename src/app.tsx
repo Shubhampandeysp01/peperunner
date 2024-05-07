@@ -4,8 +4,8 @@
 import { Canvas } from 'canvas';
 import { DEFAULT_STATE, GlobalContext } from 'contexts/global';
 import {Game} from 'game';
-import React, { useState, useEffect } from 'react';
-import { useWallet, useConnection } from "@solana/wallet-adapter-react";
+import React, { useState } from 'react';
+import { useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import MyApp from 'updateLeaderboardWithPublicKey';
 import LeaderboardTable from 'LeaderboardTable';

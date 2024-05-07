@@ -2,11 +2,9 @@
 import React, { FC, useMemo } from 'react';
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
-import { PhantomWalletAdapter, TrustWalletAdapter, SolflareWalletAdapter, SkyWalletAdapter, TorusWalletAdapter, BitgetWalletAdapter } from '@solana/wallet-adapter-wallets';
+import { PhantomWalletAdapter,SolflareWalletAdapter } from '@solana/wallet-adapter-wallets';
 import {
-    WalletModalProvider,
-    WalletDisconnectButton,
-    WalletMultiButton
+    WalletModalProvider
 } from '@solana/wallet-adapter-react-ui';
 import { clusterApiUrl } from '@solana/web3.js';
  
@@ -28,11 +26,7 @@ export const AppWalletProvider: FC<Props> = ({children}) => {
         () => [
             
             new PhantomWalletAdapter(),
-            new SolflareWalletAdapter(),
-            new TrustWalletAdapter(),
-            new SkyWalletAdapter(),
-            new TorusWalletAdapter(),
-            new BitgetWalletAdapter()
+            new SolflareWalletAdapter()
         ],
         // eslint-disable-next-line react-hooks/exhaustive-deps
         [network]

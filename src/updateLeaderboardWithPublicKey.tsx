@@ -1,6 +1,5 @@
-import React, { useContext, useEffect } from 'react';
-import { useWallet, useConnection } from "@solana/wallet-adapter-react";
-import pool from 'db';
+import  {  useEffect } from 'react';
+import { useWallet } from "@solana/wallet-adapter-react";
 import axios from 'axios';
 
 let wallet_address = "";

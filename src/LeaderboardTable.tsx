@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import * as ReactDOM from 'react-dom';
 import { Virtuoso } from 'react-virtuoso';
 
 import { getleaderboard } from 'updateLeaderboardWithPublicKey'; // Import the function to get leaderboard data from API

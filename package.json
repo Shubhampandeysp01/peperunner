@@ -36,10 +36,10 @@
   },
   "scripts": {
     "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
-    "start:frontend": "react-scripts start",
+    "start:frontend": "react-app-rewired start",
     "start:backend": "node src/backend/server.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -69,6 +69,19 @@
   "devDependencies": {
     "@types/pg": "^8.11.6",
     "concurrently": "^8.2.2",
-    "cors": "^2.8.5"
-  }
+    "cors": "^2.8.5",
+    "react-app-rewired": "^2.2.1"
+  },
+    "overrides": {
+      "@ledgerhq/devices": "6.27.1",  
+      "@ledgerhq/errors":"6.16.3",
+      "@ledgerhq/hw-transport":"6.27.1",
+      "@ledgerhq/hw-transport-webhid":"6.27.1"
+    },
+    "resolutions": {
+      "@ledgerhq/devices": "6.27.1",  
+      "@ledgerhq/errors":"6.16.3",
+      "@ledgerhq/hw-transport":"6.27.1",
+      "@ledgerhq/hw-transport-webhid":"6.27.1"}
+  
 }
