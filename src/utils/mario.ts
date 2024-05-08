@@ -59,7 +59,7 @@ export class Mario {
   }
 
   private events() {
-    const keysAllowJump: Key[] = ['up', 'space'];
+    const keysAllowJump: Key[] = ['up', 'space', 'w'];
 
     keysAllowJump.forEach((key: Key) => {
       this.k.onKeyPress(key, () => {
@@ -71,13 +71,13 @@ export class Mario {
       });
     });
 
-    this.k.onKeyDown('right', () => {
+    this.k.onKeyDown(['d', 'right'], () => {
       if (this.mario.pos.x <= 850) {
         this.mario.move(200, 0);
       }
     });
 
-    this.k.onKeyDown('left', () => {
+    this.k.onKeyDown(['a', 'left'], () => {
       if (this.mario.pos.x >= 30) {
         this.mario.move(-200, 0);
       }
