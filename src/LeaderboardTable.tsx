@@ -42,7 +42,7 @@ const LeaderboardTable: React.FC = () => {
             </thead>
             <tbody>
               <tr>
-                <td style={{ width: 300 ,textAlign: 'center'}}>{leaderboardData[index].wallet_address.substring(0, 6) + "..."}</td>
+                <td style={{ width: 300 ,textAlign: 'center'}}>{leaderboardData[index].wallet_address?.substring(0, 6) + "..."}</td>
                 <td style={{ width: 300,textAlign: 'center'}}>{leaderboardData[index].score}</td>
               </tr>
             </tbody>
