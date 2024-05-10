@@ -20,14 +20,14 @@ enum Anims {
   Run = 'run',
 }
 
-type MarioGameObj = GameObj<
+type PepeRunObj = GameObj<
   SpriteComp | LayerComp | PosComp | ScaleComp | AreaComp | BodyComp
 >;
 
 export class Mario {
   public static Sprite = 'mario';
   public static Anims = Anims;
-  public readonly mario: MarioGameObj;
+  public readonly mario: PepeRunObj;
 
   private readonly k: KaboomCtx;
   public onCollideCoin?: Function;

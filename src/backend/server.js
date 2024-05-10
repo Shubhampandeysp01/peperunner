@@ -9,7 +9,8 @@ app.use(bodyParser.json());
 
 
 app.use(cors());
-const connectionString = "postgres://default:GNPaX5WmRh9u@ep-square-meadow-a488ghyx.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require";
+const connectionString = process.env.CONNECTION_STRING;
+// const PORT = process.env.PORT || 5000;
 
 // Create a pool
 const pool = new Pool({
@@ -89,7 +90,10 @@ app.get('/leaderboard', async (req, res) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+// });
+
+app.listen(() => {
+    console.log('Server is running');
 });

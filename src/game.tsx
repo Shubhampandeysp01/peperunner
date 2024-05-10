@@ -12,7 +12,7 @@ import { Pipe } from 'utils/pipe';
 import { Sound, Sounds } from 'utils/sound';
 import { Sprite } from 'utils/sprites';
 import { updateLeaderboardWithPublicKey } from 'updateLeaderboardWithPublicKey'
-
+import '././App.css';
 
 
 
@@ -135,7 +135,10 @@ export const Game: React.FC = () => {
         k.text('Click to Start', { size: 45 }),
         k.pos(k.width() / 2, k.height() / 2),
         k.origin('center'),
-        k.color(1, 1, 1),
+        k.area({ cursor: 'pointer' }),
+    {
+      class: 'start-text', // Add a class to the text element
+    }
       ]);
 
       k.onClick(() => {
