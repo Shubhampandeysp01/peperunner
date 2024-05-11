@@ -7,6 +7,7 @@ const baseURL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3000';
 
 export const updateLeaderboardWithPublicKey = async (score: number) => {
   try {
+    console.log(baseURL);
     
     await axios.post(`${baseURL}/update-leaderboard`, { wallet_address, score });
     console.log('Leaderboard updated successfully');
@@ -17,6 +18,7 @@ export const updateLeaderboardWithPublicKey = async (score: number) => {
 
 export const getleaderboard = async() => {
   try{
+    console.log(baseURL);
     const response = await axios.get(`${baseURL}/leaderboard`);
     return response.data;
   } catch (error){
