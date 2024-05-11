@@ -12,6 +12,9 @@ app.use(bodyParser.json());
 
 
 app.use(cors());
+app.use(cors({
+    origin: 'https://mariogame-six.vercel.app'
+  }));
 const connectionString = process.env.CONNECTION_STRING;
 
 // Create a pool
