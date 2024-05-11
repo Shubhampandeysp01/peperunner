@@ -3,7 +3,8 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import axios from 'axios';
 
 let wallet_address = "";
-const baseURL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3000';
+const baseURL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:9001';
+// const baseURL = 'http://localhost:9001';
 
 export const updateLeaderboardWithPublicKey = async (score: number) => {
   try {

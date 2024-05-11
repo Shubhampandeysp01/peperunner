@@ -1,8 +1,9 @@
 {
-  "name": "mario-runner",
+  "name": "peperun",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "@solana/wallet-adapter-base": "^0.9.23",
     "@solana/wallet-adapter-react": "^0.15.35",
     "@solana/wallet-adapter-react-ui": "^0.9.35",
@@ -37,7 +38,7 @@
   "scripts": {
     "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
     "start:frontend": "react-app-rewired start",
-    "start:backend": "node src/backend/server.js",
+    "start:backend": "node src/api/server.js",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"

@@ -4,6 +4,8 @@ const { Pool } = require('pg');
 const cors = require('cors');
 
 const app = express();
+
+app.use(cors());
 app.use(bodyParser.json());
 
 
@@ -11,8 +13,8 @@ app.use(bodyParser.json());
 
 
 
-app.use(cors());
-const connectionString = process.env.CONNECTION_STRING;
+
+const connectionString = process.env.CONNECTION_STRING || "postgres://default:GNPaX5WmRh9u@ep-square-meadow-a488ghyx.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require";
 
 // Create a pool
 const pool = new Pool({
@@ -79,17 +81,17 @@ app.post('/update-leaderboard', async (req, res) => {
 
 app.get('/leaderboard', async (req, res) => {
     try {
-        console.log("Connection: "+connectionString)
-        onsole.log('Base URL:', req.baseUrl);
+        // console.log("Connection: "+connectionString)
+        // onsole.log('Base URL:', req.baseUrl);
         
-        // Log full request URL
-        console.log('Full Request URL:', req.protocol + '://' + req.get('host') + req.originalUrl);
+        // // Log full request URL
+        // console.log('Full Request URL:', req.protocol + '://' + req.get('host') + req.originalUrl);
         
-        // Log query parameters if any
-        console.log('Query Parameters:', req.query);
+        // // Log query parameters if any
+        // console.log('Query Parameters:', req.query);
 
-        // Log received request for leaderboard
-        console.log('Received request for leaderboard');
+        // // Log received request for leaderboard
+        // console.log('Received request for leaderboard');
 
         const query = `
             SELECT wallet_address, score FROM solana_wallets 
@@ -105,8 +107,10 @@ app.get('/leaderboard', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+// });
+app.get("/app", (req, res) => res.send("Express on Vercel"));
+app.listen(9001, () => console.log("Server ready on port 9001."));
 
 
