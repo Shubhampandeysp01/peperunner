@@ -25,7 +25,7 @@ const pool = new Pool({
 
 app.post('/update-leaderboard', async (req, res) => {
     try {
-        console.log("sjs");
+        console.log("sjss");
         console.log('Received request to update leaderboard:', req.body);
         const { wallet_address, score } = req.body;
 
