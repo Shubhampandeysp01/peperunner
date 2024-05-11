@@ -8,9 +8,11 @@ app.use(bodyParser.json());
 
 
 
+
+
+
 app.use(cors());
 const connectionString = process.env.CONNECTION_STRING;
-// const PORT = process.env.PORT || 5000;
 
 // Create a pool
 const pool = new Pool({
@@ -21,6 +23,7 @@ const pool = new Pool({
 
 app.post('/update-leaderboard', async (req, res) => {
     try {
+        console.log('Received request to update leaderboard:', req.body);
         const { wallet_address, score } = req.body;
 
         const query = `
@@ -75,6 +78,18 @@ app.post('/update-leaderboard', async (req, res) => {
 
 app.get('/leaderboard', async (req, res) => {
     try {
+        console.log("Connection: "+connectionString)
+        onsole.log('Base URL:', req.baseUrl);
+        
+        // Log full request URL
+        console.log('Full Request URL:', req.protocol + '://' + req.get('host') + req.originalUrl);
+        
+        // Log query parameters if any
+        console.log('Query Parameters:', req.query);
+
+        // Log received request for leaderboard
+        console.log('Received request for leaderboard');
+
         const query = `
             SELECT wallet_address, score FROM solana_wallets 
             ORDER BY score DESC
@@ -94,6 +109,8 @@ app.get('/leaderboard', async (req, res) => {
 //     console.log(`Server is running on port ${PORT}`);
 // });
 
-app.listen(() => {
-    console.log('Server is running');
-});
+
+
+app.listen(3000, () => console.log("Server ready on port 3000."));
+
+
