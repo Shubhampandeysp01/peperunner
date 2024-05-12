@@ -71,7 +71,6 @@ const CustomizedTables = () => {
     }
   };
 
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, leaderboardData.length - page * rowsPerPage);
 
 
   React.useEffect(() => {
