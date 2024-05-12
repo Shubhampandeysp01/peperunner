@@ -4,17 +4,11 @@ import axios from 'axios';
 
 let wallet_address = "";
 const baseURL = process.env.REACT_APP_BACKEND_URL;
-
+const token = process.env.MY_TOKEN;
 // const baseURL = 'http://localhost:9001';
 
 export const updateLeaderboardWithPublicKey = async (score: number) => {
   try {
-    console.log(baseURL);
-    
-    const token = process.env.MY_TOKEN;
-    console.log(token);
-    // console.log("Actusl: f5fe1eb260830b9550e155c9fde4f088c3e893d4133b717d17f41274769369950c307053c4b9d28746be6889e307cb63da9c87f314a73d2284f359ad26c34f21" );
-    
     await axios.post(`${baseURL}/update-leaderboard`, { wallet_address, score }, {
       headers: {
         Authorization: token
@@ -28,8 +22,6 @@ export const updateLeaderboardWithPublicKey = async (score: number) => {
 
 export const getleaderboard = async() => {
   try{
-    console.log(baseURL);
-    const token = process.env.MY_TOKEN;
     const response = await axios.get(`${baseURL}/leaderboard`, {
       headers: {
         Authorization: token
