@@ -9,6 +9,8 @@ const token = process.env.MY_TOKEN;
 
 export const updateLeaderboardWithPublicKey = async (score: number) => {
   try {
+    console.log(baseURL);
+    console.log(token);
     await axios.post(`${baseURL}/update-leaderboard`, { wallet_address, score }, {
       headers: {
         Authorization: token
