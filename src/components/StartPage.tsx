@@ -6,6 +6,7 @@ interface StartPageProps {
 }
 
 const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [transitionClass, setTransitionClass] = useState('');
 
   useEffect(() => {

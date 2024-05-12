@@ -128,7 +128,7 @@ export const Game: React.FC = () => {
 
 
     });
-    
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     k.scene(Scenes.Start, () => {
       new BackgroundGrass({ k });
       const startText = k.add([
