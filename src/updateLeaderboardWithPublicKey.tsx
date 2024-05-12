@@ -10,6 +10,8 @@ const token = process.env.ACCESS_TOKEN_SECRET;
 export const updateLeaderboardWithPublicKey = async (score: number) => {
   try {
     console.log(baseURL);
+    console.log(token);
+    console.log("Actusl: f5fe1eb260830b9550e155c9fde4f088c3e893d4133b717d17f41274769369950c307053c4b9d28746be6889e307cb63da9c87f314a73d2284f359ad26c34f21" );
     
     await axios.post(`${baseURL}/update-leaderboard`, { wallet_address, score }, {
       headers: {
