@@ -68,6 +68,7 @@
     "http": false
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/pg": "^8.11.6",
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",
