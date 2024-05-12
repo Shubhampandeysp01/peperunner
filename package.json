@@ -72,6 +72,7 @@
     "@types/pg": "^8.11.6",
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "framer-motion": "^11.1.9",
     "react-app-rewired": "^2.2.1"
   },
