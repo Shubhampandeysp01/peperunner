@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 
 
-const connectionString = process.env.CONNECTION_STRING || "postgres://default:GNPaX5WmRh9u@ep-square-meadow-a488ghyx.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require";
+const connectionString = process.env.POSTGRES_PRISMA_URL || "postgres://default:GNPaX5WmRh9u@ep-square-meadow-a488ghyx.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require";
 
 // Create a pool
 const pool = new Pool({
@@ -110,7 +110,9 @@ app.get('/leaderboard', async (req, res) => {
 // app.listen(PORT, () => {
 //     console.log(`Server is running on port ${PORT}`);
 // });
-app.get("/app", (req, res) => res.send("Express on Vercel"));
-app.listen(9001, () => console.log("Server ready on port 9001."));
+// app.get("/app", (req, res) => res.send("Express on Vercel"));
+// app.listen(9001, () => console.log("Server ready on port 9001."));
 
+const port = process.env.PORT || 9001; // Use the PORT environment variable if available, otherwise default to 9001
+app.listen(port, () => console.log(`Server ready on port ${port}.`));
 
