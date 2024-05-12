@@ -83,3 +83,8 @@
   .start-text {
     color: white; /* Set the text color to white */
   }
+
+  .canvas-border {
+    border: 15px solid blue !important;
+    border-radius: 12px !important;
+  }
