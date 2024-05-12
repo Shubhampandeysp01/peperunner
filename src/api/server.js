@@ -25,8 +25,6 @@ const pool = new Pool({
 
 app.post('/update-leaderboard', async (req, res) => {
     try {
-        console.log("sjss");
-        console.log('Received request to update leaderboard:', req.body);
         const { wallet_address, score } = req.body;
 
         const query = `
@@ -81,17 +79,6 @@ app.post('/update-leaderboard', async (req, res) => {
 
 app.get('/leaderboard', async (req, res) => {
     try {
-        // console.log("Connection: "+connectionString)
-        // onsole.log('Base URL:', req.baseUrl);
-        
-        // // Log full request URL
-        // console.log('Full Request URL:', req.protocol + '://' + req.get('host') + req.originalUrl);
-        
-        // // Log query parameters if any
-        // console.log('Query Parameters:', req.query);
-
-        // // Log received request for leaderboard
-        // console.log('Received request for leaderboard');
 
         const query = `
             SELECT wallet_address, score FROM solana_wallets 
@@ -107,11 +94,7 @@ app.get('/leaderboard', async (req, res) => {
     }
 });
 
-// app.listen(PORT, () => {
-//     console.log(`Server is running on port ${PORT}`);
-// });
-// app.get("/app", (req, res) => res.send("Express on Vercel"));
-// app.listen(9001, () => console.log("Server ready on port 9001."));
+
 
 const port = process.env.PORT || 9001; // Use the PORT environment variable if available, otherwise default to 9001
 app.listen(port, () => console.log(`Server ready on vercel port ${port}.`));
