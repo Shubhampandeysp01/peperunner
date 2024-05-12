@@ -4,7 +4,7 @@ import axios from 'axios';
 
 let wallet_address = "";
 const baseURL = process.env.REACT_APP_BACKEND_URL;
-const token = process.env.ACCESS_TOKEN_SECRET;
+const token = process.env.MY_TOKEN;
 // const baseURL = 'http://localhost:9001';
 
 export const updateLeaderboardWithPublicKey = async (score: number) => {
