@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
+import pepeposter from './pepeposter.jpg';
+
 
 interface StartPageProps {
   onStart: () => void; // Callback function to handle start button click
@@ -27,7 +29,13 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
 
   return (
     <div className={`start-page`}>
-      Click anywhere on the screen to start
+      {/* Replace the text with the image */}
+      <img 
+        src={pepeposter} 
+        alt="Poster" 
+        onClick={onStart} 
+        style={{ maxWidth: '100%', maxHeight: '100%', width: '100%', height: '100%' }}
+      />
     </div>
   );
 };
