@@ -71,6 +71,10 @@ const CustomizedTables = () => {
     }
   };
 
+  const calculateRank = (index:number) => {
+    return index + 1 + page * rowsPerPage;
+  };
+
 
 
   React.useEffect(() => {
@@ -91,10 +95,12 @@ const CustomizedTables = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '20px' }}>
        <LeaderboardText variant="h3">LEADERBOARD</LeaderboardText>
-      <TableContainer component={Paper} style={{ width: '1000px' }}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+      <TableContainer component={Paper} style={{ maxWidth: '100%', overflowX: 'auto' }}>
+        {/* <Table sx={{ minWidth: 700 }} aria-label="customized table"> */}
+        <Table  aria-label="customized table">
           <TableHead>
             <TableRow>
+            <StyledTableCell>Rank</StyledTableCell>
               <StyledTableCell>Wallet Address</StyledTableCell>
               <StyledTableCell align="right">Score</StyledTableCell>
             </TableRow>
@@ -102,6 +108,7 @@ const CustomizedTables = () => {
           <TableBody>
             {leaderboardData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => (
               <StyledTableRow key={index}>
+                <StyledTableCell>{calculateRank(index)}</StyledTableCell>
                 <StyledTableCell component="th" scope="row">
                 <a href={`https://solscan.io/account/${row.wallet_address}`} target="_blank" rel="noopener noreferrer"  style={{ textDecoration: 'none', color: 'black' }}>
                   {row.wallet_address}

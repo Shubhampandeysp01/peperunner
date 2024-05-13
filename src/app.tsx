@@ -11,6 +11,7 @@ import MyApp from 'updateLeaderboardWithPublicKey';
 import LeaderboardTable from 'LeaderboardTable';
 import StartPage from 'components/StartPage';
 import { motion } from 'framer-motion';
+import Rules from 'components/Rules';
 import './App.css';
 
 
@@ -50,15 +51,23 @@ export const App: React.FC = () => {
         </div><div className="flex justify-center items-center h-screen " style={{ marginTop: '20px' }}>
             <GlobalContext.Provider value={{ state, setState: reducer }}>
               <MyApp />
-              {/* Render canvas and game if connected */}
-              {connected && (
                 <>
                   <Canvas />
                   <Game />
                 </>
-              )}
             </GlobalContext.Provider>
-          </div><LeaderboardTable />
+          </div>
+          <div className="flex justify-between items-center">
+    <div style={{ flex: '80%' }}>
+      <div className=" justify-center items-center" style={{marginLeft:'20px',marginRight:'20px' ,marginTop: '20px' }}>
+        <LeaderboardTable />
+      </div>
+    </div>
+    <div style={{ flex: '20%', marginLeft: '20px' }}>
+      <Rules />
+    </div>
+  </div>
+          
           </motion.div></>
         )}
     </>

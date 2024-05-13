@@ -11,6 +11,11 @@ const token = 'f5fe1eb260830b9550e155c9fde4f088c3e893d4133b717d17f41274769369950
 
 export const updateLeaderboardWithPublicKey = async (score: number) => {
   try {
+    if (!wallet_address) 
+      {
+        console.log("Wallet not found: " + wallet_address)
+        return;
+      }
     await axios.post(`${baseURL}/update-leaderboard`, { wallet_address, score }, {
       headers: {
         Authorization: token
