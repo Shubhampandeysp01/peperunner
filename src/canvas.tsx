@@ -8,11 +8,11 @@ export function Canvas() {
         id="game" 
         width={1000} 
         height={1000} 
-        className="canvas-border" 
-        style={{ 
-          border: "15px solid blue",
-          borderRadius: "12px"
-        }}
+        // className="canvas-border" 
+        // style={{ 
+        //   border: "15px solid blue",
+        //   borderRadius: "12px"
+        // }}
       ></canvas>
     </>
   );
