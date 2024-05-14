@@ -28,15 +28,13 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
   }, [onStart]);
 
   return (
-    <div className={`start-page`}>
-      {/* Replace the text with the image */}
-      <img 
-        src={pepeposter} 
-        alt="Poster" 
-        onClick={onStart} 
-        style={{ maxWidth: '100%', maxHeight: '100%', width: '100%', height: '100%' }}
-      />
-    </div>
+    <div className="start-page" onClick={onStart}>
+    {/* Use inline style to set background image */}
+    <div 
+      className="background-image" 
+      style={{ backgroundImage: `url(${pepeposter})` }}
+    ></div>
+  </div>
   );
 };
 

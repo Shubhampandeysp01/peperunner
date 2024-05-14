@@ -128,18 +128,7 @@ export const Game: React.FC = () => {
 
 
     });
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    // k.scene(Scenes.Start, () => {
-    //   new BackgroundGrass({ k });
-    //   const startText = k.add([
-    //     k.text('Click to Start', { size: 45 }),
-    //     k.pos(k.width() / 2, k.height() / 2),
-    //     k.origin('center'),
-    //     k.area({ cursor: 'pointer' }),
-    // {
-    //   class: 'start-text', // Add a class to the text element
-    // }
-    //   ]);
+    
 
       k.scene(Scenes.Start, () => {
         new BackgroundGrass({ k });

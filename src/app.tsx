@@ -55,14 +55,16 @@ export const App: React.FC = () => {
                 </>
             </GlobalContext.Provider>
           </div>
-          <div className="flex justify-between items-center">
-    <div style={{ flex: '80%' }}>
-      <div className=" justify-center items-center" style={{marginLeft:'20px',marginRight:'20px' ,marginTop: '20px' }}>
+          <div className="leaderboard-and-rules-container">
+    <div className="leaderboard-container">
+      <div className="inner-container">
         <LeaderboardTable />
       </div>
     </div>
-    <div style={{ flex: '20%', marginLeft: '20px' }}>
-      <Rules />
+    <div className="rules-container">
+      <div className="inner-container">
+        <Rules />
+      </div>
     </div>
   </div>
           
