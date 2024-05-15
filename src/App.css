@@ -84,6 +84,7 @@
 
   .app-page {
     z-index: 999; /* Ensure it's on top of other content */
+    background-color: rgb(22, 194, 220);
   }
 
   .start-text {
@@ -111,7 +112,7 @@
   .leaderboard-and-rules-container {
     display: flex;
     flex-direction: column; /* Stack items vertically */
-    margin-top: 20px; /* Adjust as needed */
+    /* margin-top: 20px; Adjust as needed */
   }
   
   @media (min-width: 768px) {
@@ -122,7 +123,7 @@
     }
   
     .leaderboard-container {
-      margin-left: 20px;
+      /* margin-left: 20px; */
       width: 70%; /* 70% of the parent container */
     }
   

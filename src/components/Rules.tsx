@@ -10,8 +10,8 @@ import '../App.css';
 const Rules: React.FC = () => {
   return (
     <div className="rules-container">
-    <h2 style={{textAlign:'center'}}>RULES AND INFO</h2>
-    <ul className="text-center">
+    <h2 style={{textAlign:'center', color: 'white'}}>RULES AND INFO</h2>
+    <ul className="text-center" style={{ color: 'white' }}>
         <li>You can also use the shortcuts 'W', 'A','D','Space' instead of arrow keys to play.</li>
         <Divider aria-hidden="true" />
         <li>You can play the game without connecting a wallet. However, you must connect a wallet to upload your score for the leaderboards.</li>
@@ -24,13 +24,13 @@ const Rules: React.FC = () => {
       </ul>
     <div className="social-icons" style={{textAlign:'center'}}>
     <IconButton href="https://github.com/example" target="_blank">
-          <GitHubIcon color='primary'/>
+          <GitHubIcon htmlColor='#063d73'/>
         </IconButton>
         <IconButton href="https://example.com" target="_blank">
-          <XIcon color='primary' />
+          <XIcon htmlColor='#063d73' />
         </IconButton>
         <IconButton href="https://t.me/example" target="_blank">
-          <TelegramIcon color='primary' />
+          <TelegramIcon htmlColor='#063d73' />
         </IconButton>
       </div>
     </div>

@@ -12,6 +12,7 @@ import TablePagination from '@mui/material/TablePagination';
 import Typography from '@mui/material/Typography';
 
 
+
 // Import the function to get leaderboard data from API
 import { getleaderboard } from 'updateLeaderboardWithPublicKey';
 
@@ -48,6 +49,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
+
+const StyledTablePagination = styled(TablePagination)({
+  color: 'white', // Set text color to white
+});
 
 // Interface for leaderboard entry
 interface LeaderboardEntry {
@@ -94,15 +99,16 @@ const CustomizedTables = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '20px' }}>
-       <LeaderboardText variant="h3">LEADERBOARD</LeaderboardText>
+      
+       <LeaderboardText variant="h3" style={{color:'white'}}>LEADERBOARD</LeaderboardText>
       <TableContainer component={Paper} style={{ maxWidth: '100%', overflowX: 'auto' }}>
         {/* <Table sx={{ minWidth: 700 }} aria-label="customized table"> */}
         <Table  aria-label="customized table">
           <TableHead>
             <TableRow>
-            <StyledTableCell>Rank</StyledTableCell>
-              <StyledTableCell>Wallet Address</StyledTableCell>
-              <StyledTableCell align="right">Score</StyledTableCell>
+            <StyledTableCell style={{backgroundColor:'#0f3e70'}}>Rank</StyledTableCell >
+              <StyledTableCell style={{backgroundColor:'#0f3e70'}}>Wallet Address</StyledTableCell>
+              <StyledTableCell style={{backgroundColor:'#0f3e70'}} align="right">Score</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -121,9 +127,9 @@ const CustomizedTables = () => {
         </Table>
       </TableContainer>
       <div style={{ alignSelf: 'center', marginTop: '10px' }}>
-        <TablePagination
+        <StyledTablePagination
+
           rowsPerPageOptions={[5, 10, 25]}
-          component="div"
           count={leaderboardData.length}
           rowsPerPage={rowsPerPage}
           page={page}

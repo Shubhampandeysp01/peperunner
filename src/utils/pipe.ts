@@ -24,14 +24,16 @@ export class Pipe {
   }
 
   private spawn() {
-    const scaleFactor = this.k.rand(0.8, 1.5); // Random scale factor between 0.5 and 1.5
-    const scaledSize = this.initialSize * scaleFactor;
+    // const scaleFactor = this.k.rand(0.8, 2); 
+    const scaleYfactor = this.k.rand(2.5,4);
+    // const scaledSize = this.initialSize * scaleFactor;
     const randomGap = this.k.rand(250, 500);
     const spawnDelay = randomGap / this.speed;
     this.k.add([
       this.k.sprite(Pipe.Sprite),
       this.k.layer(Layers.Pipe),
-      this.k.scale(scaledSize),
+      // this.k.scale(scaledSize),
+      this.k.scale(2,scaleYfactor),
       this.k.area(),
       this.k.pos(this.k.width(), this.k.height() - this.baseLine),
       this.k.origin('botleft'),

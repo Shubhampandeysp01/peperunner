@@ -44,9 +44,13 @@ export const App: React.FC = () => {
   exit={{ scale: 0, opacity: 0 }} // Scale down and fade out
   transition={{ duration: 0.5, ease: "easeInOut" }} // Shorter animation duration
 > 
+
   <div className="absolute top-0 right-0 p-10">
           <WalletMultiButton />
-        </div><div className="flex justify-center items-center h-screen " style={{ marginTop: '20px' }}>
+        </div>
+        
+        <div className="flex justify-center items-center h-screen " style={{ marginTop: '20px', backgroundColor:'red' }}>
+        
             <GlobalContext.Provider value={{ state, setState: reducer }}>
               <MyApp />
                 <>
@@ -56,13 +60,16 @@ export const App: React.FC = () => {
             </GlobalContext.Provider>
           </div>
           <div className="leaderboard-and-rules-container">
-    <div className="leaderboard-container">
+          
+    <div className="leaderboard-container" style={{border:'5px solid white', borderRadius:'10px'}}>
       <div className="inner-container">
         <LeaderboardTable />
       </div>
     </div>
     <div className="rules-container">
+    
       <div className="inner-container">
+      
         <Rules />
       </div>
     </div>
