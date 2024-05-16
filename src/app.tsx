@@ -49,7 +49,7 @@ export const App: React.FC = () => {
           <WalletMultiButton />
         </div>
         
-        <div className="flex justify-center items-center h-screen " style={{ marginTop: '20px', backgroundColor:'red' }}>
+        <div className="flex justify-center items-center h-screen " style={{ marginTop: '20px', backgroundColor:'black' }}>
         
             <GlobalContext.Provider value={{ state, setState: reducer }}>
               <MyApp />

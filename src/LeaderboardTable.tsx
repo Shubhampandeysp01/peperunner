@@ -106,9 +106,9 @@ const CustomizedTables = () => {
         <Table  aria-label="customized table">
           <TableHead>
             <TableRow>
-            <StyledTableCell style={{backgroundColor:'#0f3e70'}}>Rank</StyledTableCell >
-              <StyledTableCell style={{backgroundColor:'#0f3e70'}}>Wallet Address</StyledTableCell>
-              <StyledTableCell style={{backgroundColor:'#0f3e70'}} align="right">Score</StyledTableCell>
+            <StyledTableCell style={{backgroundColor:'#13ab45'}}>Rank</StyledTableCell >
+              <StyledTableCell style={{backgroundColor:'#13ab45'}}>Wallet Address</StyledTableCell>
+              <StyledTableCell style={{backgroundColor:'#13ab45'}} align="right">Score</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>

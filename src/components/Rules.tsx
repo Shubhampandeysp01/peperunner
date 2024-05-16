@@ -24,13 +24,13 @@ const Rules: React.FC = () => {
       </ul>
     <div className="social-icons" style={{textAlign:'center'}}>
     <IconButton href="https://github.com/example" target="_blank">
-          <GitHubIcon htmlColor='#063d73'/>
+          <GitHubIcon htmlColor='#1345bb'/>
         </IconButton>
         <IconButton href="https://example.com" target="_blank">
-          <XIcon htmlColor='#063d73' />
+          <XIcon htmlColor='#1345bb' />
         </IconButton>
         <IconButton href="https://t.me/example" target="_blank">
-          <TelegramIcon htmlColor='#063d73' />
+          <TelegramIcon htmlColor='#1345bb' />
         </IconButton>
       </div>
     </div>
