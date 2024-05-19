@@ -8,16 +8,20 @@ export class BackgroundGrass {
 
   constructor(params: { k: KaboomCtx }) {
     this.k = params.k;
-
     this.spawn();
   }
 
   private spawn() {
+    const canvasWidth = this.k.width();
+    const canvasHeight = this.k.height();
+
     this.k.add([
-      this.k.sprite(BackgroundGrass.Sprite),
+      this.k.sprite(BackgroundGrass.Sprite, {
+        width: canvasWidth,
+        height: canvasHeight,
+      }),
       this.k.layer(Layers.Background),
-      this.k.scale(2),
-      this.k.pos(this.k.center().x, 250),
+      this.k.pos(canvasWidth / 2, canvasHeight / 2),
       this.k.origin('center'),
     ]);
   }

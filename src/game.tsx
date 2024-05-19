@@ -11,7 +11,7 @@ import { Mario } from 'utils/mario';
 import { Pipe } from 'utils/pipe';
 import { Sound, Sounds } from 'utils/sound';
 import { Sprite } from 'utils/sprites';
-import { updateLeaderboardWithPublicKey } from 'updateLeaderboardWithPublicKey'
+import { updateLeaderboardWithPublicKey } from 'updateLeaderboardWithPublicKey';
 import '././App.css';
 
 
@@ -141,6 +141,25 @@ export const Game: React.FC = () => {
         class: 'start-text', // Add a class to the text element
       }
         ]);
+
+        k.add([
+          k.text('Press Space to Jump', { size: 24 }),
+          k.pos(k.width() / 2, k.height() / 2 + 60),
+          k.origin('center'),
+        ]);
+      
+        k.add([
+          k.text('Use A and D to Move Left and Right', { size: 24 }),
+          k.pos(k.width() / 2, k.height() / 2 + 100),
+          k.origin('center'),
+        ]);
+
+  //       k.loadSprite('controls-gif', '../public/giphy.gif'); // Adjust the path to your actual GIF file
+  // k.add([
+  //   k.sprite('controls-gif'),
+  //   k.pos(k.width() / 2, k.height() / 2 - 100),
+  //   k.origin('center'),
+  // ]);
 
       k.onClick(() => {
         k.go(Scenes.Game);
