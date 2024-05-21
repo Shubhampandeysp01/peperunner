@@ -11,6 +11,7 @@ import LeaderboardTable from 'LeaderboardTable';
 import StartPage from 'components/StartPage';
 import { motion } from 'framer-motion';
 import Rules from 'components/Rules';
+import Logo from 'components/logo.png';
 import './App.css';
 
 
@@ -44,6 +45,9 @@ export const App: React.FC = () => {
   exit={{ scale: 0, opacity: 0 }} // Scale down and fade out
   transition={{ duration: 0.5, ease: "easeInOut" }} // Shorter animation duration
 > 
+<div className="logo-container">
+              <img src={Logo} alt="Logo" className="logo" />
+            </div>
 
   <div className="absolute top-0 right-0 p-10">
           <WalletMultiButton />
