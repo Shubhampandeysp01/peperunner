@@ -12,17 +12,43 @@ import StartPage from 'components/StartPage';
 import { motion } from 'framer-motion';
 import Rules from 'components/Rules';
 import Logo from 'components/logo.png';
+import Popup from 'components/Popup';
 import './App.css';
+
+const isNotPC = (): boolean => {
+  const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
+
+  // Check for mobile devices
+  if (/android/i.test(userAgent)) {
+    return true;
+  }
+
+  if (/iPad|iPhone|iPod/.test(userAgent) && !(window as any).MSStream) {
+    return true;
+  }
+
+  // Check for other non-PC devices (optional)
+  if (/mobile/i.test(userAgent)) {
+    return true;
+  }
+
+  return false;
+};
 
 
 export const App: React.FC = () => {
   const [state, setState] = useState(DEFAULT_STATE.state);
   const [showStartPage, setShowStartPage] = useState(true);
+  const [showPopup, setShowPopup] = useState(isNotPC());
 
   const handleStart = () => {
     // Handle start button click
     console.log('Start button clicked');
     setShowStartPage(false); // Hide the StartPage
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
   };
 
 
@@ -38,6 +64,12 @@ export const App: React.FC = () => {
       {showStartPage && <StartPage onStart={handleStart} />}
       { !showStartPage && (
       <>
+      {showPopup && (
+            <Popup
+              message="Please use a PC to play the game."
+              onClose={handleClosePopup}
+            />
+          )}
       <motion.div
   className={`app-page`}
   initial={{ scale: 0, opacity: 0 }} // Start from scaled down and invisible
