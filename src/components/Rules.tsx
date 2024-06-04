@@ -23,13 +23,13 @@ const Rules: React.FC = () => {
         <li>Check out our Socials below.</li>
       </ul>
     <div className="social-icons" style={{textAlign:'center'}}>
-    <IconButton href="https://github.com/example" target="_blank">
+    <IconButton href="https://peperunner.gitbook.io/peperunner" target="_blank">
           <GitHubIcon htmlColor='#1345bb'/>
         </IconButton>
-        <IconButton href="https://example.com" target="_blank">
+        <IconButton href="https://x.com/PEPE_Runner_exe?mx=2" target="_blank">
           <XIcon htmlColor='#1345bb' />
         </IconButton>
-        <IconButton href="https://t.me/example" target="_blank">
+        <IconButton href=" https://t.me/PEPE_RUNNER" target="_blank">
           <TelegramIcon htmlColor='#1345bb' />
         </IconButton>
       </div>

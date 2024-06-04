@@ -40,7 +40,7 @@ export class Grass {
       this.k.pos(this.k.width(), this.k.height() - this.baseLine),
       this.k.origin('botleft'),
       this.k.move(this.k.LEFT, 100),
-      this.k.color(211, 169, 16),
+      this.k.color(85, 223, 9),
       'grass',
     ]);
     this.k.wait(this.k.rand(7, 10), () => this.high());
