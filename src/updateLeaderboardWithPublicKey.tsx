@@ -76,6 +76,7 @@ export const getLeaderboard = async () => {
 
 const MyComponent = () => {
     const { publicKey } = useWallet();
+    // eslint-disable-next-line
     const [leaderboard, setLeaderboard] = useState(null);
 
     useEffect(() => {
