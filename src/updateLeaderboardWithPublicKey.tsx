@@ -1,63 +1,111 @@
-import  {  useEffect } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useWallet } from "@solana/wallet-adapter-react";
 import axios from 'axios';
 
+// const API_URL = 'https://expressserver-kappa.vercel.app';
+const API_URL = process.env.REACT_APP_BACKEND_URL;
 let wallet_address = "";
-const baseURL = process.env.REACT_APP_BACKEND_URL;
-// const baseURL = 'https://expressserver-tau.vercel.app';
-// const token = process.env.MY_TOKEN;
-const token = 'f5fe1eb260830b9550e155c9fde4f088c3e893d4133b717d17f41274769369950c307053c4b9d28746be6889e307cb63da9c87f314a73d2284f359ad26c34f21';
-// const baseURL = 'http://localhost:9001';
+let tokenStored: string | null = null;
+let tokenExpiryTime: number | null = null;
+const username = "itsSecretGuessWhat7712";
 
-export const updateLeaderboardWithPublicKey = async (score: number) => {
-  try {
-    if (!wallet_address) 
-      {
-        console.log("Wallet not found: " + wallet_address)
-        return;
-      }
-    await axios.post(`${baseURL}/update-leaderboard`, { wallet_address, score }, {
-      headers: {
-        Authorization: token
-      }
-    });
-    console.log('Leaderboard updated successfully');
-} catch (error) {
-    console.error('Error updating leaderboard: ', error);
-}
+const issueToken = async (username: string) => {
+    try {
+        const response = await axios.post(`${API_URL}/issue-token`, { username });
+        const token = response.data.token;
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        tokenExpiryTime = decodedToken.exp * 1000; // Store expiration time in milliseconds
+        tokenStored = token;
+        return token;
+    } catch (error) {
+        console.error('Error issuing token:', error);
+        return null;
+    }
 };
 
-export const getleaderboard = async() => {
-  try{
-    const response = await axios.get(`${baseURL}/leaderboard`, {
-      headers: {
-        Authorization: token
-      }
-    });
-    return response.data;
-  } catch (error){
-    console.error('Error in getLeaderboard: ',error );
-  }
-}
+const isTokenExpired = () => {
+    if (!tokenExpiryTime) return true;
+    return Date.now() >= tokenExpiryTime;
+};
+
+const getValidToken = async (username: string) => {
+    if (!tokenStored || isTokenExpired()) {
+        return await issueToken(username);
+    }
+    return tokenStored;
+};
+
+export const updateLeaderboardWithPublicKey = async ( score: number) => {
+    try {
+        if (!wallet_address) {
+            console.log("Wallet not found:", wallet_address);
+            return;
+        }
+        const token = await getValidToken(username);
+        if (!token) {
+            console.error('Token not available.');
+            return;
+        }
+        await axios.post(`${API_URL}/update-leaderboard`, { wallet_address, score }, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            withCredentials: true 
+        });
+        console.log('Leaderboard updated successfully');
+    } catch (error) {
+        console.error('Error updating leaderboard:', error);
+    }
+};
+
+export const getLeaderboard = async () => {
+    try {
+        const token = await getValidToken(username);
+        if (!token) {
+            console.error('Token not available.');
+            return;
+        }
+        const response = await axios.get(`${API_URL}/leaderboard`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            withCredentials: true
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error in getLeaderboard:', error);
+    }
+};
 
 const MyComponent = () => {
-  const {publicKey} = useWallet();
+    const { publicKey } = useWallet();
+    const [leaderboard, setLeaderboard] = useState(null);
 
-  useEffect(() => {
-    if (publicKey) {
-      wallet_address = publicKey.toBase58(); // Convert publicKey to string
-    }
-  }, [publicKey]);
+    useEffect(() => {
+        if (publicKey) {
+            wallet_address = publicKey.toBase58();
+        }
+    }, [publicKey]);
 
-  return null; 
+    const fetchLeaderboard = useCallback(async () => {
+        const leaderboardData = await getLeaderboard();
+        setLeaderboard(leaderboardData);
+    }, []);
+
+    useEffect(() => {
+            fetchLeaderboard();
+        
+    }, [fetchLeaderboard, publicKey]);
+
+    return null;
 };
 
 const MyApp = () => {
-  return (
-    <div>
-      <MyComponent />
-    </div>
-  );
+    return (
+        <div>
+            <MyComponent />
+        </div>
+    );
 };
 
 export default MyApp;

@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography';
 
 
 // Import the function to get leaderboard data from API
-import { getleaderboard } from 'updateLeaderboardWithPublicKey';
+import { getLeaderboard } from './updateLeaderboardWithPublicKey';
 
 const LeaderboardText = styled(Typography)(({ theme }: { theme: Theme }) => ({
   leaderboardText: {
@@ -85,7 +85,7 @@ const CustomizedTables = () => {
   React.useEffect(() => {
     const fetchLeaderboard = async () => {
       try {
-        const response = await getleaderboard();
+        const response = await getLeaderboard();
         if (response) {
           setLeaderboardData(response);
         }
