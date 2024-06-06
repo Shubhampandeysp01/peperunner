@@ -2,8 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useWallet } from "@solana/wallet-adapter-react";
 import axios from 'axios';
 
-// const API_URL = 'https://expressserver-kappa.vercel.app';
-const API_URL = process.env.REACT_APP_BACKEND_URL;
+const API_URL = 'https://expressserver-kappa.vercel.app';
 let wallet_address = "";
 let tokenStored: string | null = null;
 let tokenExpiryTime: number | null = null;
@@ -49,8 +48,7 @@ export const updateLeaderboardWithPublicKey = async ( score: number) => {
         await axios.post(`${API_URL}/update-leaderboard`, { wallet_address, score }, {
             headers: {
                 Authorization: `Bearer ${token}`
-            },
-            withCredentials: true 
+            }
         });
         console.log('Leaderboard updated successfully');
     } catch (error) {
@@ -68,8 +66,7 @@ export const getLeaderboard = async () => {
         const response = await axios.get(`${API_URL}/leaderboard`, {
             headers: {
                 Authorization: `Bearer ${token}`
-            },
-            withCredentials: true
+            }
         });
         return response.data;
     } catch (error) {
