@@ -8,6 +8,7 @@ interface StartPageProps {
 }
 
 const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [transitionClass, setTransitionClass] = useState('');
   const sectionRefs = {
     home: useRef<HTMLDivElement>(null),
@@ -16,6 +17,7 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const handleClick = () => {
       setTransitionClass('transition-effect');
       onStart();
