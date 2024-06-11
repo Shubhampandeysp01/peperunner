@@ -40,7 +40,7 @@ export const Game: React.FC = () => {
     new Sprite(k).loadSprites();
     new Sound(k).loadSounds();
 
-    const music = k.play(Sounds.MusicTheme, { volume: 0.2, loop: true });
+    const music = k.play(Sounds.MusicTheme, { volume: 0.5, loop: true });
 
     k.scene(Scenes.Game, () => {
       k.layers(

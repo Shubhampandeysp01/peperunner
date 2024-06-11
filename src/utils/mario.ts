@@ -84,7 +84,9 @@ export class Mario {
     });
 
     this.mario.onCollide(Pipe.Sprite, () => {
+      this.k.play(Sounds.Death, { volume: 1 });
       this.k.go('lose');
+
     });
 
     this.mario.onCollide(FloorGrass.Sprite, () => {
@@ -93,7 +95,7 @@ export class Mario {
     });
 
     this.mario.onCollide(Coin.Sprite, (coin) => {
-      this.k.play(Sounds.Coin, { volume: 0.1 });
+      this.k.play(Sounds.Coin, { volume: 1 });
       coin.destroy();
 
       this?.onCollideCoin && this.onCollideCoin();

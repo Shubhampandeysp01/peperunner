@@ -1,0 +1,261 @@
+.start-page {
+    background-color: white;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #18aadf;
+    padding: 10px 20px;
+    color: black;
+    position: fixed; /* Make navbar fixed */
+  top: 0; /* Stick it to the top */
+  width: 100%; /* Make sure it spans the full width */
+  z-index: 1000; /* Ensure it stays above other content */
+  box-sizing: border-box;
+  }
+  
+  .navbar-logo {
+    margin-right: 150px;
+  }
+  
+  .navbar-logo img {
+    height: 80px;
+  }
+  
+  .navbar-menu {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: space-between;
+  }
+  
+  .navbar-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar-links li {
+    margin-left: 20px;
+  }
+  
+  .navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .navbar-links a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .navbar-links a:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+  
+  .navbar-links a:hover {
+    color: #f0db4f; /* Change text color on hover */
+    transform: scale(1.1);
+  }
+  
+  .navbar-links a:active {
+    color: #e09f3e; /* Change text color on click */
+    transform: scale(0.95);
+  }
+  
+  .navbar-icons {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar-icons a {
+    color: blue; /* Default color for icons */
+    font-size: 24px;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .navbar-icons li {
+    margin-left: 10px;
+  }
+
+  
+  .navbar-icons .icon {
+    font-size: 24px;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .navbar-icons .icon:hover {
+    transform: scale(1.2);
+  }
+  
+  .navbar-icons .icon:active {
+    transform: scale(0.9);
+  }
+  
+  .navbar-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .section {
+    margin: 20px 0;
+    padding: 20px;
+}
+
+.home-section {
+    position: relative;
+}
+
+.home-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    position: relative;
+}
+
+.home-button {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #18aadf;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .home-button:hover {
+    background-color: #105f7a;
+    transform: translateX(-50%) scale(1.1);
+  }
+  
+
+.tokenomics-section {
+    background-color: #18aadf;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 40px;
+    display: block;
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.tokenomics-carousel {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    width: 100%;
+  }
+  
+  .tokenomics-item {
+    min-width: 300px;
+    flex: 0 0 auto;
+    margin-right: 20px;
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+  
+  .carousel-controls button {
+    background-color: #18aadf;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .carousel-controls button:hover {
+    background-color: #105f7a;
+  }
+  
+
+.howto-section {
+    background-color: #18aadf;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 40px;
+    display: block;
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.howto-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.howto-section ul li {
+    margin: 10px 0;
+}
+  
+  @media (max-width: 768px) {
+    .navbar-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: #18aadf;
+    }
+  
+    .navbar-menu.active {
+      display: flex;
+    }
+  
+    .navbar-links,
+    .navbar-icons {
+      flex-direction: column;
+    }
+  
+    .navbar-links li,
+    .navbar-icons li {
+      margin: 10px 0;
+      text-align: center;
+    }
+  
+    .navbar-toggle {
+      display: block;
+    }
+  }
+  
+ 
