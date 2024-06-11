@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef , useCallback } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import '../App.css';
 import Navbar from './Navbar';
 import pepeposter from './pepe.png';
@@ -16,24 +16,21 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
     howto: useRef<HTMLDivElement>(null),
   };
 
-  const handleClick = useCallback(() => {
-    setTransitionClass('transition-effect');
-    onStart();
-  }, [onStart]);
-
   useEffect(() => {
-    // Add event listener to handle click outside useEffect
-    document.addEventListener('click', handleClick);
-
-    // Cleanup function to remove event listener
-    return () => {
-      document.removeEventListener('click', handleClick);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const handleClick = () => {
+      setTransitionClass('transition-effect');
+      onStart();
     };
-  }, [handleClick]); // Include handleClick as a dependency
+
+    return () => {
+    };
+  }, [onStart]);
 
   const scrollToRef = (ref: React.RefObject<HTMLElement>) => {
     if (ref && ref.current) {
       ref.current.scrollIntoView({ behavior: 'smooth' });
+      
     }
   };
 
