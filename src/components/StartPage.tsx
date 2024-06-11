@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef , useCallback } from 'react';
 import '../App.css';
 import Navbar from './Navbar';
 import pepeposter from './pepe.png';
@@ -18,10 +18,10 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const handleClick = () => {
+    const handleClick = useCallback(() => {
       setTransitionClass('transition-effect');
       onStart();
-    };
+    }, [onStart]);
 
 
     return () => {
