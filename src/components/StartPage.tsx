@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import '../App.css';
 import Navbar from './Navbar';
-import pepeposter from './pepeposter.jpg';
+import pepeposter from './pepe.png';
 
 interface StartPageProps {
   onStart: () => void;
