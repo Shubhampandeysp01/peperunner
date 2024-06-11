@@ -16,22 +16,24 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
     howto: useRef<HTMLDivElement>(null),
   };
 
+  const handleClick = useCallback(() => {
+    setTransitionClass('transition-effect');
+    onStart();
+  }, [onStart]);
+
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const handleClick = useCallback(() => {
-      setTransitionClass('transition-effect');
-      onStart();
-    }, [onStart]);
+    // Add event listener to handle click outside useEffect
+    document.addEventListener('click', handleClick);
 
-
+    // Cleanup function to remove event listener
     return () => {
+      document.removeEventListener('click', handleClick);
     };
-  }, []);
+  }, [handleClick]); // Include handleClick as a dependency
 
   const scrollToRef = (ref: React.RefObject<HTMLElement>) => {
     if (ref && ref.current) {
       ref.current.scrollIntoView({ behavior: 'smooth' });
-      
     }
   };
 
