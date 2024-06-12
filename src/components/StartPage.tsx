@@ -114,46 +114,30 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
         <button className='home-button' onClick={onStart}>Play Game</button>
       </div>
       <div ref={sectionRefs.tokenomics} className='section tokenomics-section'>
-  <h1>Presale</h1>
-  <h2>Instructions</h2>
-  <p>
-    To join the presale, connect your wallet by clicking the "Connect"
-    button on the top right Then click the deposit button below to deposit
-    0.05 ETH to our presale contract When the claim phase is announced,
-    click the claim button below to get your PEPEGAME tokens The game
-    launches after the presale ends
-  </p>
+  <h1>Tokenomics</h1>
 
   <Carousel indicators={false} interval={null}>
           <Carousel.Item>
             <div className="d-flex justify-content-around carousel-item-container">
               <div className="carousel-item-content">
-                <div className="percentage">35%</div>
-                <div className="label">Presale</div>
+                <div className="percentage">5%</div>
+                <div className="label">Game, Airdrops, Giveaways</div>
               </div>
               <div className="carousel-item-content">
-                <div className="percentage">35%</div>
+                <div className="percentage">80%</div>
                 <div className="label">Liquidity Pool</div>
-              </div>
-              <div className="carousel-item-content">
-                <div className="percentage">20%</div>
-                <div className="label">Game</div>
               </div>
             </div>
           </Carousel.Item>
           <Carousel.Item>
             <div className="d-flex justify-content-around carousel-item-container">
               <div className="carousel-item-content">
-                <div className="percentage">2.5%</div>
+                <div className="percentage">5%</div>
                 <div className="label">Team</div>
               </div>
               <div className="carousel-item-content">
-                <div className="percentage">2.5%</div>
-                <div className="label">Advisors</div>
-              </div>
-              <div className="carousel-item-content">
-                <div className="percentage">5%</div>
-                <div className="label">Marketing, Giveaways, Exchange Listing</div>
+                <div className="percentage">10%</div>
+                <div className="label">Liquidity Providers</div>
               </div>
             </div>
           </Carousel.Item>

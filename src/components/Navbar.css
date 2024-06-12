@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #18aadf;
+    background-color: #0c112a;
     padding: 10px 20px;
     color: black;
     position: fixed !important; /* Make navbar fixed */
@@ -154,7 +154,7 @@
 
 
 .tokenomics-section {
-    background-color: #18aadf;
+    background-color: #0f1845;
     color: white;
     font-weight: bold;
     border-radius: 15px;
@@ -209,7 +209,7 @@
   
 
   .howto-section {
-    background-color: #18aadf;
+    background-color: #0f1845;
     color: white;
     font-weight: bold;
     border-radius: 15px;
