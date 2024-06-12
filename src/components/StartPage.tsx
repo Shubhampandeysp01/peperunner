@@ -11,55 +11,8 @@ interface StartPageProps {
 }
 
 const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [transitionClass, setTransitionClass] = useState('');
-  const sectionRefs = {
-    home: useRef<HTMLDivElement>(null),
-    tokenomics: useRef<HTMLDivElement>(null),
-    howto: useRef<HTMLDivElement>(null),
-    roadmap: useRef<HTMLDivElement>(null),
-  };
 
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const handleClick = () => {
-      setTransitionClass('transition-effect');
-      onStart();
-    };
-
-    return () => {
-    };
-  }, [onStart]);
-
-  const scrollToRef = (ref: React.RefObject<HTMLElement>) => {
-    if (ref && ref.current) {
-      ref.current.scrollIntoView({ behavior: 'smooth' });
-      
-    }
-  };
-
-  const [howToVisible, setHowToVisible] = useState(false);
-
-  useEffect(() => {
-    const howToSection = sectionRefs.howto.current;
-    if (howToSection) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setHowToVisible(true);
-          }
-        });
-      }, { threshold: 0.5 });
-
-      observer.observe(howToSection);
-
-      return () => {
-        observer.unobserve(howToSection);
-      };
-    }
-  }, [sectionRefs.howto]);
-
-  const roadmapItems = [
+  const roadmapItems= [
     {
       title: "Q1 2024",
       cardTitle: "Initial Release",
@@ -109,6 +62,48 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
       },
     }
   ];
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [transitionClass, setTransitionClass] = useState('');
+  const sectionRefs = {
+    home: useRef<HTMLDivElement>(null),
+    tokenomics: useRef<HTMLDivElement>(null),
+    howto: useRef<HTMLDivElement>(null),
+    roadmap: useRef<HTMLDivElement>(null),
+  };
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const handleClick = () => {
+      setTransitionClass('transition-effect');
+      onStart();
+    };
+
+    return () => {
+    };
+  }, [onStart]);
+
+  const scrollToRef = (ref: React.RefObject<HTMLElement>) => {
+    if (ref && ref.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth' });
+      
+    }
+  };
+
+  
+
+  const [activeItem, setActiveItem] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveItem((prev) => (prev + 1) % roadmapItems.length);
+    }, 2500);
+  
+    return () => clearInterval(interval);
+  }, [roadmapItems.length]); // Include roadmapItems.length in the dependency array
+  
+
+  
   
 
   return (
@@ -165,7 +160,7 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
         </Carousel>
  
 </div>
-<div ref={sectionRefs.howto} className={`section howto-section ${howToVisible ? 'fade-in show' : 'fade-in'}`}>
+<div ref={sectionRefs.howto} className={`section howto-section`}>
         <h1>How to Play</h1>
         <ul>
           <li>You can also use the shortcuts 'W', 'A','D','Space' instead of arrow keys to play.</li>
@@ -175,10 +170,22 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
         </ul>
       </div>
 
-      <div ref={sectionRefs.roadmap} className="section roadmap-section">
-        <h1>Roadmap</h1>
-        <Chrono items={roadmapItems} mode="VERTICAL_ALTERNATING"    slideItemDuration={4500} slideShowType="slide_from_sides" slideshow   />
-      </div>
+      <div style={{ width: "100%", height: "95vh",  }} ref={sectionRefs.roadmap} className="section roadmap-section">
+      <h1>Roadmap</h1>
+      <Chrono
+        items={roadmapItems}
+        mediaWidth={300}
+        cardWidth={300}
+        enableBreakPoint
+        verticalBreakPoint={500}
+        mode="VERTICAL_ALTERNATING"
+        slideItemDuration={4500} 
+        slideShowType='slide_from_sides'
+        slideshow
+        activeItemIndex={activeItem}
+        scrollable={{ scrollbar: true }}
+      />
+ </div>
     </div>
   );
 };
