@@ -5,6 +5,7 @@ import pepeposter from './pepe.png';
 import { Carousel } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Chrono } from 'react-chrono';
+import gameinitial from './gameinit.png';
 
 interface StartPageProps {
   onStart: () => void;
@@ -21,7 +22,8 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
       media: {
         type: "IMAGE",
         source: {
-          url: "https://picsum.photos/id/1018/1000",
+          url: gameinitial,
+
         },
       },
     },
@@ -158,8 +160,8 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
       <h1>Roadmap</h1>
       <Chrono
         items={roadmapItems}
-        mediaWidth={300}
-        cardWidth={300}
+        // mediaWidth={300}
+        // cardWidth={300}
         enableBreakPoint
         verticalBreakPoint={500}
         mode="VERTICAL_ALTERNATING"
@@ -168,6 +170,7 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
         slideshow
         activeItemIndex={activeItem}
         scrollable={{ scrollbar: true }}
+        mediaSettings={{ align: 'right', fit: 'contain' }}
       />
  </div>
     </div>
