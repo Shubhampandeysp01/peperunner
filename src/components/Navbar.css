@@ -14,6 +14,7 @@
   width: 100%; /* Make sure it spans the full width */
   z-index: 1000; /* Ensure it stays above other content */
   box-sizing: border-box;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
   }
   
   .navbar-logo {
