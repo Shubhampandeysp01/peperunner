@@ -9,8 +9,8 @@
     background-color: #18aadf;
     padding: 10px 20px;
     color: black;
-    position: fixed; /* Make navbar fixed */
-  top: 0; /* Stick it to the top */
+    position: fixed !important; /* Make navbar fixed */
+  top: 0 ; /* Stick it to the top */
   width: 100%; /* Make sure it spans the full width */
   z-index: 1000; /* Ensure it stays above other content */
   box-sizing: border-box;
@@ -69,12 +69,12 @@
   }
   
   .navbar-links a:hover {
-    color: #f0db4f; /* Change text color on hover */
+    color: #2c3e50; /* Change text color on hover */
     transform: scale(1.1);
   }
   
   .navbar-links a:active {
-    color: #e09f3e; /* Change text color on click */
+    color: #2c3e50; /* Change text color on click */
     transform: scale(0.95);
   }
   
@@ -152,6 +152,7 @@
   }
   
 
+
 .tokenomics-section {
     background-color: #18aadf;
     color: white;
@@ -162,14 +163,18 @@
     margin-top: 20px;
     margin-left: 100px;
     margin-right: 100px;
-}
-
-.tokenomics-carousel {
-    display: flex;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    width: 100%;
+    position: relative; /* Added this line */
   }
+
+  .tokenomics-section h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+
   
   .tokenomics-item {
     min-width: 300px;
@@ -182,50 +187,77 @@
     text-align: center;
   }
   
-  .carousel-controls {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
+  .carousel-item-container {
+    align-items: center;
   }
   
-  .carousel-controls button {
-    background-color: #18aadf;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+  .carousel-item-content {
+    text-align: center;
+    margin: 10px;
   }
   
-  .carousel-controls button:hover {
-    background-color: #105f7a;
+  .percentage {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2c3e50; /* Change to your desired color */
+  }
+  
+  .label {
+    font-size: 1.25rem;
+    color: white; /* Change to your desired color */
   }
   
 
-.howto-section {
+  .howto-section {
     background-color: #18aadf;
     color: white;
     font-weight: bold;
     border-radius: 15px;
     padding: 40px;
-    display: block;
-    margin-top: 20px;
-    margin-left: 100px;
-    margin-right: 100px;
-}
-
-.howto-section ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-
-.howto-section ul li {
-    margin: 10px 0;
-}
+    margin: 20px 100px;
+  }
+  
+  .howto-section h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .howto-section ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+  }
+  
+  .howto-section ul li {
+    margin: 20px 0;
+    font-size: 1.25rem;
+    align-items: flex-start;
+  }
+  
+  .howto-section ul li::before {
+    content: '•';
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 10px;
+  }
+  
+  .howto-section ul li:hover {
+    color: #2c3e50;
+  }
+  
+  .fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .fade-in.show {
+    opacity: 1;
+  }
+  
+  
   
   @media (max-width: 768px) {
     .navbar-menu {

@@ -8,9 +8,11 @@ interface NavbarProps {
   homeRef: React.RefObject<HTMLElement>;
   tokenomicsRef: React.RefObject<HTMLElement>;
   howtoRef: React.RefObject<HTMLElement>;
+  roadmapRef: React.RefObject<HTMLElement>;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ scrollToRef, homeRef, tokenomicsRef, howtoRef }) => {
+const Navbar: React.FC<NavbarProps> = ({ scrollToRef, homeRef, tokenomicsRef, howtoRef, roadmapRef }) => {
+
   const [isMobile, setIsMobile] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -23,7 +25,6 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToRef, homeRef, tokenomicsRef, ho
         <img src={Logo} alt="Logo" />
       </div>
       <div className={`navbar-menu ${isMobile ? 'active' : ''}`}>
-        {/* <ul className="navbar-links"> */}
         <ul className="navbar-links">
           <li><a href="#home" onClick={() => scrollToRef(homeRef)}>Home</a></li></ul>
           <ul className="navbar-links">
@@ -32,10 +33,13 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToRef, homeRef, tokenomicsRef, ho
           <ul className="navbar-links">
           <li><a href="#howto" onClick={() => scrollToRef(howtoRef)}>How to Play</a></li>
         </ul>
+        <ul className="navbar-links">
+          <li><a href="#roadmap" onClick={() => scrollToRef(roadmapRef)}>Roadmap</a></li>
+        </ul>
         <ul className="navbar-icons">
-          <li className='icon'><a href="#facebook"><FaTelegram /></a></li>
-          <li className='icon'><a href="#instagram"><FaTwitter /></a></li>
-          <li className='icon'><a href="#github"><FaGithub /></a></li>
+          <li className='icon'><a href=" https://t.me/PEPE_RUNNER" target="_blank" rel="noopener noreferrer"><FaTelegram /></a></li>
+          <li className='icon'><a href="https://x.com/PEPE_Runner_exe?mx=2" target="_blank" rel="noopener noreferrer"><FaTwitter /></a></li>
+          <li className='icon'><a href="https://peperunner.gitbook.io/peperunner" target="_blank" rel="noopener noreferrer"><FaGithub /></a></li>
         </ul>
       </div>
       <div className="navbar-toggle" onClick={toggleMobileMenu}>

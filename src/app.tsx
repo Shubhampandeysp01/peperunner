@@ -10,7 +10,6 @@ import MyApp from 'updateLeaderboardWithPublicKey';
 import LeaderboardTable from 'LeaderboardTable';
 import StartPage from 'components/StartPage';
 import { motion } from 'framer-motion';
-import Rules from 'components/Rules';
 import Logo from 'components/logo.png';
 import Popup from 'components/Popup';
 import './App.css';
@@ -95,21 +94,12 @@ export const App: React.FC = () => {
                 </>
             </GlobalContext.Provider>
           </div>
-          <div className="leaderboard-and-rules-container">
           
     <div className="leaderboard-container" style={{border:'5px solid white', borderRadius:'10px'}}>
       <div className="inner-container">
         <LeaderboardTable />
       </div>
     </div>
-    <div className="rules-container">
-    
-      <div className="inner-container">
-      
-        <Rules />
-      </div>
-    </div>
-  </div>
           
           </motion.div></>
         )}
