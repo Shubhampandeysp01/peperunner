@@ -94,7 +94,7 @@ body {
   .app-page {
     z-index: 999; /* Ensure it's on top of other content */
     /* background-color: rgb(22, 194, 220); */
-    background-color:rgb(7, 48, 4);
+    background-color:black;
   }
 
   .start-text {

@@ -160,8 +160,6 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
       <h1>Roadmap</h1>
       <Chrono
         items={roadmapItems}
-        // mediaWidth={300}
-        // cardWidth={300}
         enableBreakPoint
         verticalBreakPoint={500}
         mode="VERTICAL_ALTERNATING"

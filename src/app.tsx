@@ -13,6 +13,7 @@ import { motion } from 'framer-motion';
 import Logo from 'components/logo.png';
 import Popup from 'components/Popup';
 import './App.css';
+import Button from 'react-bootstrap/Button';
 
 const isNotPC = (): boolean => {
   const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
@@ -55,7 +56,9 @@ export const App: React.FC = () => {
     setState({ ...state, ...partial });
   }
 
-
+  const handlerefresh = () => {
+    window.location.reload();
+  };
 
   return (
     <>
@@ -94,7 +97,9 @@ export const App: React.FC = () => {
                 </>
             </GlobalContext.Provider>
           </div>
-          
+          <Button variant="primary" size="lg" style={{marginLeft:'8px' , backgroundColor: '#28a9c8', }} onClick={handlerefresh}>
+          Home
+        </Button>{' '}
     <div className="leaderboard-container" style={{border:'5px solid white', borderRadius:'10px'}}>
       <div className="inner-container">
         <LeaderboardTable />
