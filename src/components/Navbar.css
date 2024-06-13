@@ -9,10 +9,10 @@
     background-color: #0c112a;
     padding: 10px 20px;
     color: black;
-    position: fixed !important; /* Make navbar fixed */
-  top: 0 ; /* Stick it to the top */
-  width: 100%; /* Make sure it spans the full width */
-  z-index: 1000; /* Ensure it stays above other content */
+    position: fixed !important; 
+  top: 0 ; 
+  width: 100%; 
+  z-index: 1000; 
   box-sizing: border-box;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
   }
@@ -70,12 +70,12 @@
   }
   
   .navbar-links a:hover {
-    color: #2e7fd0; /* Change text color on hover */
+    color: #2e7fd0; 
     transform: scale(1.1);
   }
   
   .navbar-links a:active {
-    color: #2e7fd0; /* Change text color on click */
+    color: #2e7fd0; 
     transform: scale(0.95);
   }
   
@@ -121,6 +121,11 @@
     padding: 20px;
 }
 
+@font-face {
+  font-family: 'CustomFont';
+  src: url('./runner.TTF') format('truetype');
+}
+
 .home-section {
   position: relative;
   height: 100vh;
@@ -145,7 +150,7 @@
 }
 
 .text {
-  font-size: calc(4vw + 1.8em);
+  font-size: calc(8vw + 1.8em);
   font-weight: bold;
   color: white;
   white-space: nowrap;
@@ -155,6 +160,7 @@
 }
 
 .pepe-text {
+  font-family: 'CustomFont', sans-serif;
   color: #4CAF50;
   text-shadow: 
     0 1px 0 #9ED09E,
@@ -177,6 +183,7 @@
 }
 
 .runner-text {
+  font-family: 'CustomFont', sans-serif;
   color: #2196F3;
   text-shadow: 
     0 1px 0 #6AB7FF,
@@ -198,61 +205,13 @@
   margin-left: auto;
 }
 
-/* .pepe-text {
-  background-image: linear-gradient(to right, #8BC34A, #CDDC39, #FFEB3B, #FFC107, #FF9800, #FF5722, #F44336, #E91E63, #9C27B0, #673AB7, #3F51B5, #2196F3, #03A9F4, #00BCD4, #009688, #4CAF50);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 
-    0 1px 0 rgba(255, 255, 255, 0.3),
-    0 2px 0 rgba(255, 255, 255, 0.3),
-    0 3px 0 rgba(255, 255, 255, 0.3),
-    0 4px 0 rgba(255, 255, 255, 0.3),
-    0 5px 0 rgba(255, 255, 255, 0.3),
-    0 6px 0 rgba(255, 255, 255, 0.3),
-    0 7px 0 rgba(255, 255, 255, 0.3),
-    0 8px 6px rgba(0, 0, 0, 0.1),
-    0 9px 6px rgba(0, 0, 0, 0.1),
-    0 10px 6px rgba(0, 0, 0, 0.1),
-    0 11px 6px rgba(0, 0, 0, 0.1),
-    0 12px 6px rgba(0, 0, 0, 0.1),
-    0 13px 6px rgba(0, 0, 0, 0.1),
-    0 14px 6px rgba(0, 0, 0, 0.1),
-    0 15px 6px rgba(0, 0, 0, 0.1);
-  animation: slideInLeft 2s forwards, collide 1s 2s forwards;
-  margin-right: auto;
-}
 
-.runner-text {
-  background-image: linear-gradient(to right, #03A9F4, #00BCD4, #009688, #4CAF50, #8BC34A, #CDDC39, #FFEB3B, #FFC107, #FF9800, #FF5722, #F44336, #E91E63, #9C27B0, #673AB7, #3F51B5, #2196F3);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 
-    0 1px 0 rgba(255, 255, 255, 0.3),
-    0 2px 0 rgba(255, 255, 255, 0.3),
-    0 3px 0 rgba(255, 255, 255, 0.3),
-    0 4px 0 rgba(255, 255, 255, 0.3),
-    0 5px 0 rgba(255, 255, 255, 0.3),
-    0 6px 0 rgba(255, 255, 255, 0.3),
-    0 7px 0 rgba(255, 255, 255, 0.3),
-    0 8px 6px rgba(0, 0, 0, 0.1),
-    0 9px 6px rgba(0, 0, 0, 0.1),
-    0 10px 6px rgba(0, 0, 0, 0.1),
-    0 11px 6px rgba(0, 0, 0, 0.1),
-    0 12px 6px rgba(0, 0, 0, 0.1),
-    0 13px 6px rgba(0, 0, 0, 0.1),
-    0 14px 6px rgba(0, 0, 0, 0.1),
-    0 15px 6px rgba(0, 0, 0, 0.1);
-  animation: slideInRight 2s forwards, collide 1s 2s forwards;
-  margin-left: auto;
-} */
 
 .pepe-icon {
   animation: bounce 2s infinite;
-  width: 10vw; /* Adjust size as needed */
+  width: 10vw; 
   height: auto;
-  flex-shrink: 0; /* Prevent shrinking */
+  flex-shrink: 0; 
 }
 
 
@@ -333,7 +292,7 @@
     margin-top: 20px;
     margin-left: 100px;
     margin-right: 100px;
-    position: relative; /* Added this line */
+    position: relative; 
   }
 
   .tokenomics-section h1 {
@@ -369,12 +328,12 @@
   .percentage {
     font-size: 2.5rem;
     font-weight: bold;
-    color: white; /* Change to your desired color */
+    color: white; 
   }
   
   .label {
     font-size: 1.25rem;
-    color: white; /* Change to your desired color */
+    color: white; 
   }
   
 
@@ -417,6 +376,8 @@
   .howto-section ul li:hover {
     color: black;
   }
+  
+
   
   .fade-in {
     opacity: 0;

@@ -7,6 +7,9 @@ import { Chrono } from 'react-chrono';
 import gameinitial from './gameinit.png';
 import gamebg from './gamebg.png';
 import pepeicon from './pepeicon.png';
+import enemies from './enemies.png'
+ import score from './score.png';
+ import multi from './multi.png'
 
 
 interface StartPageProps {
@@ -37,7 +40,7 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
       media: {
         type: "IMAGE",
         source: {
-          url: "https://picsum.photos/id/1018/1000",
+          url: enemies,
         },
       },
     },
@@ -49,7 +52,7 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
       media: {
         type: "IMAGE",
         source: {
-          url: "https://picsum.photos/id/1018/1000",
+          url: score,
         },
       },
     },
@@ -61,7 +64,7 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
       media: {
         type: "IMAGE",
         source: {
-          url: "https://picsum.photos/id/1018/1000",
+          url: multi,
         },
       },
     }
@@ -101,10 +104,10 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveItem((prev) => (prev + 1) % roadmapItems.length);
-    }, 4500);
+    }, 10000);
   
     return () => clearInterval(interval);
-  }, [roadmapItems.length]); // Include roadmapItems.length in the dependency array
+  }, [roadmapItems.length]); 
   
 
   
@@ -158,7 +161,7 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
         <ul>
           <li>You can also use the shortcuts 'W', 'A','D','Space' instead of arrow keys to play.</li>
           <li>You can play the game without connecting a wallet. However, you must connect a wallet to upload your score for the leaderboards.</li>
-          <li>Top 25 players every week will receive tokens as a reward. CA: ......................................</li>
+          <li>Top 25 players every week will receive tokens as a reward. CA: COMING SOON </li>
           <li>Any cheating or exploiting will result in your score being wiped from the leaderboards.</li>
         </ul>
       </div>
@@ -170,12 +173,9 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
         enableBreakPoint
         verticalBreakPoint={500}
         mode="VERTICAL_ALTERNATING"
-        slideItemDuration={4500} 
-        slideShowType='slide_from_sides'
-        slideshow
         activeItemIndex={activeItem}
         scrollable={{ scrollbar: true }}
-        mediaSettings={{ align: 'right', fit: 'contain' }}
+        mediaSettings={{ align: 'right', fit: 'contain'}}
       />
  </div>
     </div>

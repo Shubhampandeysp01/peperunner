@@ -48,57 +48,39 @@
     transform-origin: top;
   }
 
-  /* .start-page {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    font-size: 24px;
-    z-index: 999; 
-  }
   
-  .background-image {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-  } */
-
-  /* Ensure the start-page takes full viewport height */
 .start-page {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh; /* Use viewport height units */
+  height: 100vh; 
   text-align: center;
   font-size: 24px;
-  z-index: 999; /* Ensure it's on top of other content */
-  overflow: auto; /* Ensure content is scrollable */
+  z-index: 999; 
+  overflow: auto; 
 }
 
 .background-image {
   width: 100%;
   height: 100%;
   background-size: cover; 
-  background-repeat: no-repeat; /* Prevent the image from repeating */
+  background-repeat: no-repeat;
 }
 
 
 body {
-  overflow: auto; /* Ensure the body can scroll if necessary */
+  overflow: auto; 
 }
 
 
   .app-page {
-    z-index: 999; /* Ensure it's on top of other content */
-    /* background-color: rgb(22, 194, 220); */
+    z-index: 999; 
     background-color:black;
   }
 
   .start-text {
-    color: white; /* Set the text color to white */
+    color: white;
   }
 
   .canvas-border {
@@ -120,7 +102,7 @@ body {
 
   @media (max-width: 1100px) {
     .background-image {
-      background-size: contain; /* Adjust image size to fit within the container */
+      background-size: contain;
   }
   } 
 
