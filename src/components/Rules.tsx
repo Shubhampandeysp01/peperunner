@@ -16,7 +16,7 @@ const Rules: React.FC = () => {
         <Divider aria-hidden="true" />
         <li>You can play the game without connecting a wallet. However, you must connect a wallet to upload your score for the leaderboards.</li>
         <Divider aria-hidden="true" />
-        <li>Top 25 players every week will receive tokens as a reward. CA: FLAPi65LhuToCpUkg26dzmrDrNcpHuQhxCqJWsHxUpyq</li>
+        <li>Top 25 players every week will receive tokens as a reward. CA: ...............................</li>
         <Divider aria-hidden="true" />
         <li>Any cheating or exploiting will result in your score being wiped from the leaderboards.</li>
         <Divider aria-hidden="true" />

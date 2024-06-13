@@ -158,7 +158,7 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
         <ul>
           <li>You can also use the shortcuts 'W', 'A','D','Space' instead of arrow keys to play.</li>
           <li>You can play the game without connecting a wallet. However, you must connect a wallet to upload your score for the leaderboards.</li>
-          <li>Top 25 players every week will receive tokens as a reward. CA: FLAPi65LhuToCpUkg26dzmrDrNcpHuQhxCqJWsHxUpyq</li>
+          <li>Top 25 players every week will receive tokens as a reward. CA: ......................................</li>
           <li>Any cheating or exploiting will result in your score being wiped from the leaderboards.</li>
         </ul>
       </div>
