@@ -101,7 +101,7 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveItem((prev) => (prev + 1) % roadmapItems.length);
-    }, 2500);
+    }, 4500);
   
     return () => clearInterval(interval);
   }, [roadmapItems.length]); // Include roadmapItems.length in the dependency array
