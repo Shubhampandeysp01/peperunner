@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
 import '../App.css';
 import Navbar from './Navbar';
-import pepeposter from './pepe.png';
 import { Carousel } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Chrono } from 'react-chrono';
 import gameinitial from './gameinit.png';
+import gamebg from './gamebg.png';
+import pepeicon from './pepeicon.png';
+
 
 interface StartPageProps {
   onStart: () => void;
@@ -111,8 +113,13 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
   return (
     <div className='start-page'>
       <Navbar scrollToRef={scrollToRef} homeRef={sectionRefs.home} tokenomicsRef={sectionRefs.tokenomics} howtoRef={sectionRefs.howto} roadmapRef={sectionRefs.roadmap} />
-      <div ref={sectionRefs.home} className='section home-section' style={{ marginTop: '100px' }}>
-        <img src={pepeposter} alt="Home" className='home-image' />
+      
+      <div ref={sectionRefs.home} className='section home-section' style={{backgroundImage: `url(${gamebg})`}}>
+      <div className='home-content'>
+          <div className='text pepe-text'>Pepe</div>
+          <img src={pepeicon} alt="Pepe Icon" className='pepe-icon' />
+          <div className='text runner-text'>Runner</div>
+        </div>
         <button className='home-button' onClick={onStart}>Play Game</button>
       </div>
       <div ref={sectionRefs.tokenomics} className='section tokenomics-section'>
