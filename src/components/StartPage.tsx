@@ -22,7 +22,7 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
       title: "June 2024",
       cardTitle: "Initial Release",
       cardSubtitle: "Launch of the game",
-      cardDetailedText: "Initial release of the game with basic features and functionalities.\nStep into the wild world of Pepe Runner, where every hop, skip, and jump is a meme-filled adventure!",
+      cardDetailedText: "Initial release of the game with basic features and functionalities. Step into the wild world of Pepe Runner, where every hop, skip, and jump is a meme-filled adventure!",
       media: {
         type: "IMAGE",
         source: {
@@ -34,7 +34,7 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
       title: "July 2024",
       cardTitle: "New Levels",
       cardSubtitle: "Expansion of game content",
-      cardDetailedText: "Add new levels and challenges to keep the gameplay engaging.\nWe are working on enemies and new levels for the game.",
+      cardDetailedText: "Add new levels and challenges to keep the gameplay engaging. We are diligently working on introducing new enemies and levels to elevate the gaming experience.",
       media: {
         type: "IMAGE",
         source: {
@@ -46,7 +46,7 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
       title: "August 2024",
       cardTitle: "Multiplayer Mode",
       cardSubtitle: "Enhancement of game features",
-      cardDetailedText: "Introduce multiplayer mode to allow players to compete against each other in real-time.\nWe will add multiplayer mode in a visually appealing aesthetic.",
+      cardDetailedText: "Introduce multiplayer mode to allow players to compete against each other in real-time. This update will bring a thrilling new dimension to the game by enabling real-time player competition.",
       media: {
         type: "IMAGE",
         source: {
