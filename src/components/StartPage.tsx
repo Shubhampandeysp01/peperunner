@@ -9,7 +9,6 @@ import gamebg from './gamebg.png';
 import pepeicon from './pepeicon.png';
 import enemies from './enemies.png'
  import score from './score.png';
- import multi from './multi.png'
 
 
 interface StartPageProps {
@@ -18,25 +17,24 @@ interface StartPageProps {
 
 const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
 
-  const roadmapItems= [
+  const roadmapItems = [
     {
-      title: "Q1 2024",
+      title: "June 2024",
       cardTitle: "Initial Release",
       cardSubtitle: "Launch of the game",
-      cardDetailedText: "Initial release of the game with basic features and functionalities.",
+      cardDetailedText: "Initial release of the game with basic features and functionalities.\nStep into the wild world of Pepe Runner, where every hop, skip, and jump is a meme-filled adventure!",
       media: {
         type: "IMAGE",
         source: {
           url: gameinitial,
-
         },
       },
     },
     {
-      title: "Q2 2024",
-      cardTitle: "Leaderboard Feature",
-      cardSubtitle: "Integration of leaderboards",
-      cardDetailedText: "Introduce leaderboards to track top players and reward them accordingly.",
+      title: "July 2024",
+      cardTitle: "New Levels",
+      cardSubtitle: "Expansion of game content",
+      cardDetailedText: "Add new levels and challenges to keep the gameplay engaging.\nWe are working on enemies and new levels for the game.",
       media: {
         type: "IMAGE",
         source: {
@@ -45,30 +43,19 @@ const StartPage: React.FC<StartPageProps> = ({ onStart }) => {
       },
     },
     {
-      title: "Q3 2024",
-      cardTitle: "New Levels",
-      cardSubtitle: "Expansion of game content",
-      cardDetailedText: "Add new levels and challenges to keep the gameplay engaging.",
+      title: "August 2024",
+      cardTitle: "Multiplayer Mode",
+      cardSubtitle: "Enhancement of game features",
+      cardDetailedText: "Introduce multiplayer mode to allow players to compete against each other in real-time.\nWe will add multiplayer mode in a visually appealing aesthetic.",
       media: {
         type: "IMAGE",
         source: {
           url: score,
         },
       },
-    },
-    {
-      title: "Q4 2024",
-      cardTitle: "Multiplayer Mode",
-      cardSubtitle: "Enhancement of game features",
-      cardDetailedText: "Introduce multiplayer mode to allow players to compete against each other in real-time.",
-      media: {
-        type: "IMAGE",
-        source: {
-          url: multi,
-        },
-      },
     }
   ];
+  
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [transitionClass, setTransitionClass] = useState('');
