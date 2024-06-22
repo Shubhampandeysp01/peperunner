@@ -14,7 +14,6 @@ const encryptToken = (token: string) => {
     return CryptoJS.AES.encrypt(token, ENCRYPTION_KEY).toString();
 };
 
-// Function to decrypt token received from backend
 const decryptToken = (encryptedToken: string) => {
     const bytes = CryptoJS.AES.decrypt(encryptedToken, ENCRYPTION_KEY);
     return bytes.toString(CryptoJS.enc.Utf8);
@@ -26,7 +25,7 @@ const issueToken = async (username: string) => {
         const token = response.data.token;
         const encryptedToken = encryptToken(token);
         const decodedToken = JSON.parse(atob(token.split('.')[1]));
-        tokenExpiryTime = decodedToken.exp * 1000; // Store expiration time in milliseconds
+        tokenExpiryTime = decodedToken.exp * 1000; 
         tokenStored = encryptedToken;
         return token;
     } catch (error) {
