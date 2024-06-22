@@ -1,20 +1,33 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useWallet } from "@solana/wallet-adapter-react";
 import axios from 'axios';
+import CryptoJS from 'crypto-js';
 
 const API_URL = 'https://expressserver-kappa.vercel.app';
 let wallet_address = "";
 let tokenStored: string | null = null;
 let tokenExpiryTime: number | null = null;
 const username = "itsSecretGuessWhat7712";
+const ENCRYPTION_KEY = '2e97978113af177038fe1bee8aa6db17b710cf3fe43ea287033c1b8ff059b6fe';
+
+const encryptToken = (token: string) => {
+    return CryptoJS.AES.encrypt(token, ENCRYPTION_KEY).toString();
+};
+
+// Function to decrypt token received from backend
+const decryptToken = (encryptedToken: string) => {
+    const bytes = CryptoJS.AES.decrypt(encryptedToken, ENCRYPTION_KEY);
+    return bytes.toString(CryptoJS.enc.Utf8);
+};
 
 const issueToken = async (username: string) => {
     try {
         const response = await axios.post(`${API_URL}/issue-token`, { username });
         const token = response.data.token;
+        const encryptedToken = encryptToken(token);
         const decodedToken = JSON.parse(atob(token.split('.')[1]));
         tokenExpiryTime = decodedToken.exp * 1000; // Store expiration time in milliseconds
-        tokenStored = token;
+        tokenStored = encryptedToken;
         return token;
     } catch (error) {
         console.error('Error issuing token:', error);
@@ -31,7 +44,7 @@ const getValidToken = async (username: string) => {
     if (!tokenStored || isTokenExpired()) {
         return await issueToken(username);
     }
-    return tokenStored;
+    return decryptToken(tokenStored);
 };
 
 export const updateLeaderboardWithPublicKey = async ( score: number) => {
