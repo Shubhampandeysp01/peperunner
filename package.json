@@ -93,6 +93,7 @@
     "@mui/material": "^5.15.17",
     "@types/crypto-js": "^4.2.2",
     "@types/pg": "^8.11.6",
+    "@types/sjcl": "^1.0.34",
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
