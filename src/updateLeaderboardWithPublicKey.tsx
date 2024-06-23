@@ -10,7 +10,7 @@ let tokenExpiryTime: number | null = null;
 const username = "itsSecretGuessWhat7712";
 const ENCRYPTION_KEY = '2e97978113af177038fe1bee8aa6db17b710cf3fe43ea287033c1b8ff059b6fe';
 
-const IV_LENGTH = 16; // For AES, this is always 16 bytes
+// const IV_LENGTH = 16; // For AES, this is always 16 bytes
 
 // const encryptToken = (token: string) => {
 //     let iv = CryptoJS.lib.WordArray.random(IV_LENGTH);
