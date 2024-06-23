@@ -23,8 +23,8 @@ const ENCRYPTION_KEY = '2e97978113af177038fe1bee8aa6db17b710cf3fe43ea287033c1b8f
 // };
 
 const decryptToken = (encryptedToken: string) => {
-    let parts = encryptedToken.split(':');
-    let ivPart = parts.shift(); // This could be undefined
+    let parts = JSON.stringify(encryptedToken).split(':');
+    let ivPart = parts.shift(); 
     if (!ivPart) {
         throw new Error("Invalid encrypted token format");
     }
@@ -33,7 +33,7 @@ const decryptToken = (encryptedToken: string) => {
     let decrypted = CryptoJS.AES.decrypt(encrypted, CryptoJS.enc.Hex.parse(ENCRYPTION_KEY), {
         iv: iv,
         mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.Pkcs7
+        padding: CryptoJS.pad.NoPadding
     });
     return decrypted.toString(CryptoJS.enc.Utf8);
 };
