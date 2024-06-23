@@ -10,13 +10,32 @@ let tokenExpiryTime: number | null = null;
 const username = "itsSecretGuessWhat7712";
 const ENCRYPTION_KEY = '2e97978113af177038fe1bee8aa6db17b710cf3fe43ea287033c1b8ff059b6fe';
 
+const IV_LENGTH = 16; // For AES, this is always 16 bytes
+
 // const encryptToken = (token: string) => {
-//     return CryptoJS.AES.encrypt(token, ENCRYPTION_KEY).toString();
+//     let iv = CryptoJS.lib.WordArray.random(IV_LENGTH);
+//     let encrypted = CryptoJS.AES.encrypt(token, CryptoJS.enc.Hex.parse(ENCRYPTION_KEY), {
+//         iv: iv,
+//         mode: CryptoJS.mode.CBC,
+//         padding: CryptoJS.pad.Pkcs7
+//     });
+//     return iv.toString() + ':' + encrypted.toString();
 // };
 
 const decryptToken = (encryptedToken: string) => {
-    const bytes = CryptoJS.AES.decrypt(encryptedToken, ENCRYPTION_KEY);
-    return bytes.toString(CryptoJS.enc.Utf8);
+    let parts = encryptedToken.split(':');
+    let ivPart = parts.shift(); // This could be undefined
+    if (!ivPart) {
+        throw new Error("Invalid encrypted token format");
+    }
+    let iv = CryptoJS.enc.Hex.parse(ivPart);
+    let encrypted = parts.join(':');
+    let decrypted = CryptoJS.AES.decrypt(encrypted, CryptoJS.enc.Hex.parse(ENCRYPTION_KEY), {
+        iv: iv,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7
+    });
+    return decrypted.toString(CryptoJS.enc.Utf8);
 };
 
 const issueToken = async (username: string) => {
