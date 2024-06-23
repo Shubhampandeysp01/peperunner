@@ -10,9 +10,9 @@ let tokenExpiryTime: number | null = null;
 const username = "itsSecretGuessWhat7712";
 const ENCRYPTION_KEY = '2e97978113af177038fe1bee8aa6db17b710cf3fe43ea287033c1b8ff059b6fe';
 
-const encryptToken = (token: string) => {
-    return CryptoJS.AES.encrypt(token, ENCRYPTION_KEY).toString();
-};
+// const encryptToken = (token: string) => {
+//     return CryptoJS.AES.encrypt(token, ENCRYPTION_KEY).toString();
+// };
 
 const decryptToken = (encryptedToken: string) => {
     const bytes = CryptoJS.AES.decrypt(encryptedToken, ENCRYPTION_KEY);
@@ -22,12 +22,12 @@ const decryptToken = (encryptedToken: string) => {
 const issueToken = async (username: string) => {
     try {
         const response = await axios.post(`${API_URL}/issue-token`, { username });
-        const token = response.data.token;
-        const encryptedToken = encryptToken(token);
-        const decodedToken = JSON.parse(atob(token.split('.')[1]));
-        tokenExpiryTime = decodedToken.exp * 1000; 
+        const encryptedToken = response.data.encryptedToken;
+        const decryptedToken = decryptToken(encryptedToken);
+        const decodedToken = JSON.parse(atob(decryptedToken.split('.')[1]));
+        tokenExpiryTime = decodedToken.exp * 1000;
         tokenStored = encryptedToken;
-        return token;
+        return decryptedToken; // Return the decrypted token
     } catch (error) {
         console.error('Error issuing token:', error);
         return null;
