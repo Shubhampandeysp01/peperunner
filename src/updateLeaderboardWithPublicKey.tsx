@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useWallet } from "@solana/wallet-adapter-react";
 import axios from 'axios';
-import CryptoJS from 'crypto-js';
+import sjcl from 'sjcl';
 
 const API_URL = 'https://expressserver-kappa.vercel.app';
 let wallet_address = "";
@@ -10,32 +10,9 @@ let tokenExpiryTime: number | null = null;
 const username = "itsSecretGuessWhat7712";
 const ENCRYPTION_KEY = '2e97978113af177038fe1bee8aa6db17b710cf3fe43ea287033c1b8ff059b6fe';
 
-// const IV_LENGTH = 16; // For AES, this is always 16 bytes
 
-// const encryptToken = (token: string) => {
-//     let iv = CryptoJS.lib.WordArray.random(IV_LENGTH);
-//     let encrypted = CryptoJS.AES.encrypt(token, CryptoJS.enc.Hex.parse(ENCRYPTION_KEY), {
-//         iv: iv,
-//         mode: CryptoJS.mode.CBC,
-//         padding: CryptoJS.pad.Pkcs7
-//     });
-//     return iv.toString() + ':' + encrypted.toString();
-// };
-
-const decryptToken = (encryptedToken: string) => {
-    let parts = JSON.stringify(encryptedToken).split(':');
-    let ivPart = parts.shift(); 
-    if (!ivPart) {
-        throw new Error("Invalid encrypted token format");
-    }
-    let iv = CryptoJS.enc.Hex.parse(ivPart);
-    let encrypted = parts.join(':');
-    let decrypted = CryptoJS.AES.decrypt(encrypted, CryptoJS.enc.Hex.parse(ENCRYPTION_KEY), {
-        iv: iv,
-        mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.NoPadding
-    });
-    return decrypted.toString(CryptoJS.enc.Utf8);
+const decryptToken = (encryptedText: string): string => {
+    return sjcl.decrypt(ENCRYPTION_KEY, encryptedText);
 };
 
 const issueToken = async (username: string) => {
