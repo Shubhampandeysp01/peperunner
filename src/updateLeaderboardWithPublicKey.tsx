@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useWallet } from "@solana/wallet-adapter-react";
-import { createClient } from '@vercel/postgres';
+import { createPool } from '@vercel/postgres';
 
 
 let public_key = "";
-const client = createClient({
+const client = createPool({
     connectionString: "postgres://default:GNPaX5WmRh9u@ep-square-meadow-a488ghyx-pooler.us-east-1.aws.neon.tech/verceldb?sslmode=require",
 });
 
