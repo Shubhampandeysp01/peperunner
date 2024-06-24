@@ -10,11 +10,19 @@ import Paper from '@mui/material/Paper';
 import { Theme } from '@mui/material/styles';
 import TablePagination from '@mui/material/TablePagination';
 import Typography from '@mui/material/Typography';
+import { QueryResultRow } from '@vercel/postgres';
 
 
 
 // Import the function to get leaderboard data from API
-import { getLeaderboard } from './updateLeaderboardWithPublicKey';
+import { getLeaderboard } from 'updateLeaderboardWithPublicKey';
+
+interface LeaderboardEntry {
+  wallet_address: string;
+  score: number;
+  // Add other fields as needed
+}
+
 
 const LeaderboardText = styled(Typography)(({ theme }: { theme: Theme }) => ({
   leaderboardText: {
@@ -85,15 +93,17 @@ const CustomizedTables = () => {
   React.useEffect(() => {
     const fetchLeaderboard = async () => {
       try {
-        const response = await getLeaderboard();
-        if (response) {
-          setLeaderboardData(response);
-        }
+        const response: QueryResultRow[] = await getLeaderboard();
+        const formattedData: LeaderboardEntry[] = response.map((row: QueryResultRow) => ({
+          wallet_address: row.wallet_address,
+          score: row.score,
+        }));
+        setLeaderboardData(formattedData);
       } catch (error) {
         console.error('Error fetching leaderboard: ', error);
       }
     };
-  
+
     fetchLeaderboard();
   }, []);
 
