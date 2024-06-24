@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useWallet } from "@solana/wallet-adapter-react";
 import { createClient } from '@vercel/postgres';
-const path = require('path');
-require('dotenv').config({ path: path.resolve(process.cwd(),'.vercel/env.production.local') });
+
+
 let public_key = "";
 const client = createClient({
-    connectionString: process.env.POSTGRES_URL,
+    connectionString: "postgres://default:GNPaX5WmRh9u@ep-square-meadow-a488ghyx-pooler.us-east-1.aws.neon.tech/verceldb?sslmode=require",
 });
 
 interface LeaderboardEntry {
