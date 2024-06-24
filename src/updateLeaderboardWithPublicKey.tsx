@@ -1,63 +1,89 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useWallet } from "@solana/wallet-adapter-react";
-import { createPool } from '@vercel/postgres';
+import axios from 'axios';
 
+const API_URL = 'https://expressserver-kappa.vercel.app';
+let wallet_address = "";
+let tokenStored: string | null = null;
+let tokenExpiryTime: number | null = null;
+const username = "itsSecretGuessWhat7712";
 
-let public_key = "";
-const client = createPool({
-    connectionString: "postgres://default:GNPaX5WmRh9u@ep-square-meadow-a488ghyx-pooler.us-east-1.aws.neon.tech/verceldb?sslmode=require",
-});
-
-interface LeaderboardEntry {
-    wallet_address: string;
-    score: number;
-}
-
-export const getLeaderboard = async (): Promise<LeaderboardEntry[]> => {
+const issueToken = async (username: string) => {
     try {
-        const queryString = `SELECT wallet_address, score FROM solana_wallets;`;
-        const { rows } = await client.query(queryString);
-        console.log('Wallets:', rows);
-        return rows.map((row: any) => ({
-            wallet_address: row.wallet_address,
-            score: row.score,
-        }));
+        const response = await axios.post(`${API_URL}/issue-token`, { username });
+        const token = response.data.token;
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        tokenExpiryTime = decodedToken.exp * 1000; // Store expiration time in milliseconds
+        tokenStored = token;
+        return token;
     } catch (error) {
-        console.error('Error fetching wallets:', error);
-        throw error;
+        console.error('Error issuing token:', error);
+        return null;
     }
 };
-export const updateLeaderboardWithPublicKey = async (score: number) => {
-    try {
-        const leaderboardQuery = await client.query(`SELECT id, wallet_address, score FROM solana_wallets ORDER BY score DESC LIMIT 25;`);
-        const currentLeaderboard = leaderboardQuery.rows as any[];
 
-        if (currentLeaderboard.length < 25 || score > (currentLeaderboard[currentLeaderboard.length - 1]?.score ?? -Infinity)) {
-            
-            const existingEntryIndex = currentLeaderboard.findIndex(entry => entry.wallet_address === public_key);
-            
-            if (existingEntryIndex !== -1) {
-                if (score > currentLeaderboard[existingEntryIndex].score) {
-                    await client.query(`UPDATE solana_wallets SET score = ${score} WHERE id = ${currentLeaderboard[existingEntryIndex].id};`);
-                }
-            } else {
-                await client.query(`INSERT INTO solana_wallets (wallet_address, score) VALUES (${public_key}, ${score});`);
-                if (currentLeaderboard.length >= 25) {
-                    await client.query(`DELETE FROM solana_wallets WHERE id = ${currentLeaderboard[currentLeaderboard.length - 1].id};`);
-                }
-            }
+const isTokenExpired = () => {
+    if (!tokenExpiryTime) return true;
+    return Date.now() >= tokenExpiryTime;
+};
+
+const getValidToken = async (username: string) => {
+    if (!tokenStored || isTokenExpired()) {
+        return await issueToken(username);
+    }
+    return tokenStored;
+};
+
+export const updateLeaderboardWithPublicKey = async ( score: number) => {
+    try {
+        if (!wallet_address) {
+            console.log("Wallet not found:", wallet_address);
+            return;
         }
+        const token = await getValidToken(username);
+        if (!token) {
+            console.error('Token not available.');
+            return;
+        }
+        await axios.post(`${API_URL}/update-leaderboard`, { wallet_address, score }, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        console.log('Leaderboard updated successfully');
     } catch (error) {
         console.error('Error updating leaderboard:', error);
-        throw error;
     }
 };
 
+export const getLeaderboard = async () => {
+    try {
+        const token = await getValidToken(username);
+        if (!token) {
+            console.error('Token not available.');
+            return;
+        }
+        const response = await axios.get(`${API_URL}/leaderboard`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error in getLeaderboard:', error);
+    }
+};
 
 const MyComponent = () => {
     const { publicKey } = useWallet();
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [leaderboard, setLeaderboard] = useState<{ wallet_address: string; score: number; }[]>([]);
+    // eslint-disable-next-line
+    const [leaderboard, setLeaderboard] = useState(null);
+
+    useEffect(() => {
+        if (publicKey) {
+            wallet_address = publicKey.toBase58();
+        }
+    }, [publicKey]);
 
     const fetchLeaderboard = useCallback(async () => {
         const leaderboardData = await getLeaderboard();
@@ -65,13 +91,8 @@ const MyComponent = () => {
     }, []);
 
     useEffect(() => {
-        if (publicKey) {
-            public_key = publicKey.toBase58();
-        }
-    }, [publicKey]);
-
-    useEffect(() => {
-        fetchLeaderboard();
+            fetchLeaderboard();
+        
     }, [fetchLeaderboard, publicKey]);
 
     return null;
