@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useWallet } from "@solana/wallet-adapter-react";
-import { sql , QueryResultRow } from '@vercel/postgres';
+import { Client } from '@vercel/postgres';
 
 
 let public_key = "";
-
+const client = new Client({
+    connectionString: process.env.POSTGRES_URL,
+});
 
 interface LeaderboardEntry {
     wallet_address: string;
@@ -13,9 +15,10 @@ interface LeaderboardEntry {
 
 export const getLeaderboard = async (): Promise<LeaderboardEntry[]> => {
     try {
-        const { rows } = await sql`SELECT wallet_address, score FROM solana_wallets;`;
+        const queryString = `SELECT wallet_address, score FROM solana_wallets;`;
+        const { rows } = await client.query(queryString);
         console.log('Wallets:', rows);
-        return rows.map((row: QueryResultRow) => ({
+        return rows.map((row: any) => ({
             wallet_address: row.wallet_address,
             score: row.score,
         }));
@@ -26,8 +29,8 @@ export const getLeaderboard = async (): Promise<LeaderboardEntry[]> => {
 };
 export const updateLeaderboardWithPublicKey = async (score: number) => {
     try {
-        const leaderboardQuery = await sql`SELECT id, wallet_address, score FROM solana_wallets ORDER BY score DESC LIMIT 25;`;
-        const currentLeaderboard = leaderboardQuery.rows as QueryResultRow[];
+        const leaderboardQuery = await client.query(`SELECT id, wallet_address, score FROM solana_wallets ORDER BY score DESC LIMIT 25;`);
+        const currentLeaderboard = leaderboardQuery.rows as any[];
 
         if (currentLeaderboard.length < 25 || score > (currentLeaderboard[currentLeaderboard.length - 1]?.score ?? -Infinity)) {
             
@@ -35,12 +38,12 @@ export const updateLeaderboardWithPublicKey = async (score: number) => {
             
             if (existingEntryIndex !== -1) {
                 if (score > currentLeaderboard[existingEntryIndex].score) {
-                    await sql`UPDATE solana_wallets SET score = ${score} WHERE id = ${currentLeaderboard[existingEntryIndex].id};`;
+                    await client.query(`UPDATE solana_wallets SET score = ${score} WHERE id = ${currentLeaderboard[existingEntryIndex].id};`);
                 }
             } else {
-                await sql`INSERT INTO solana_wallets (wallet_address, score) VALUES (${public_key}, ${score});`;
+                await client.query(`INSERT INTO solana_wallets (wallet_address, score) VALUES (${public_key}, ${score});`);
                 if (currentLeaderboard.length >= 25) {
-                    await sql`DELETE FROM solana_wallets WHERE id = ${currentLeaderboard[currentLeaderboard.length - 1].id};`;
+                    await client.query(`DELETE FROM solana_wallets WHERE id = ${currentLeaderboard[currentLeaderboard.length - 1].id};`);
                 }
             }
         }
