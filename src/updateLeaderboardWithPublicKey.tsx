@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useWallet } from "@solana/wallet-adapter-react";
 import { createClient } from '@vercel/postgres';
-
-
+const path = require('path');
+require('dotenv').config({ path: path.resolve(process.cwd(),'.vercel/env.production.local') });
 let public_key = "";
 const client = createClient({
     connectionString: process.env.POSTGRES_URL,
